@@ -1,7 +1,6 @@
 # HW6
 
-## Group Members:
-- Xupeng Shi
-- Yihang Liu
-- Yutian Wang
-
+## Basic Information
+- Name: Chrono-geo data visualizer
+- Group members: Xupeng Shi, Yutian Wang, Yihang Liu
+- Group name: remote-city
