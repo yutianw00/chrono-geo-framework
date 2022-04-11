@@ -28,6 +28,16 @@ The `Visual Plugin`s provide functionality to present the data in an intuitive w
 
 ## Generality vs Specificity
 
+### Key Abstraction
+In this framework, the key abstraction is the intermediate data type. By transforming data in CSV files, Excel files, Twitter messages or other formats into a same intermediate state, the handle part of this framework deal with different files without knowing the details, it can be generic enough to accept various kinds of data sources. Since visual plugins just need to process data in intermediate state, this framework can also provide multiple visualizations like GeoMap graph, PieChart graph and so on.  Besides, the main task of the framework focuses on sorting and gathering data based on geographic features, its functinoality covers from like population migration to recent COVID virus development, so this framework is also specific enough to be reused in many kinds of fields.
+
+### Reusable Functionality
+No matter in which format, all the input data need to be sorted in time order and gathered into groups based on geometry features, so the sort function and gather function will be the core reusable functions. Besides, there are some more generic functions can be reused, like set descriptions of data or visualizations, get the size of input data, start and restart and so on.
+
+### Potential Flexibility of Plugins
+At the beginning, the data plugins of this framework have covered CSV files, Excel files and Twitter messages, and visualization plugins of this framework have covered classic table, geography heat map and line charts. And this framework is open to provide plugins to support more kinds of data format and display format. And the main task of a plugin is to accept data in a specific type into a generic type (intermediate state), lots parts of other jobs will be done by reusable parts. In the future, the framework may give support to different ways to choose plugins like accepting terminal command lines, reading configuration files and so on.
+
+
 ## Project Structure
 
 ### Organization of framework 
