@@ -80,3 +80,317 @@ The `Map` are used to store and group the data. Data with similar/same geology l
 The plugins are loaded using java `ServiceLoader`. The paths for the plugin classes will be stored in the `plugins` file under the `resources/META-INF.services` and would be registered using the java `ServiceLoader` in the `Main` class. 
 
 ## Plugin interfaces
+
+dataSet plugin code snippets:
+
+CSVPlugin.java:
+```
+package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
+
+import java.util.List;
+
+public class XYMapPlugin {
+    private Object XYMapChart;
+    private List<Integer> data;
+    private List<String> outPut;
+    private List<Integer> intermediateState;
+
+    /**
+     * Transform the output data from the framework to be ready to render in the front-end.
+     * Store the answer to this.outPut
+     * @param input input from the framework
+     */
+    public void transform(List<Integer> input) {
+        this.intermediateState = tranData(input);
+        this.outPut = outPutData(this.intermediateState);
+    }
+
+    /**
+     * First step to transform the data from the framework to the intermediateState.
+     * @param input
+     * @return
+     */
+    private List<Integer> tranData(List<Integer> input) {
+        return null;
+    }
+
+    /**
+     * Second step to transform the data into suitable state that can be render in the front end.
+     * @param intermediateState intermediate state of output
+     * @return List of String to be render in the front-end
+     */
+    private List<String> outPutData(List<Integer> intermediateState) {
+        return null;
+    }
+
+    /**
+     * Potential transformation of intermediate state.
+     */
+    private void helper() {
+        return;
+    }
+}
+
+```
+
+ExcelPlugin.java:
+```
+package edu.cmu.cs.cs214.rec10.plugin.dataPlugin;
+
+import java.io.File;
+import java.util.List;
+
+public class ExcelPlugin {
+    List<Integer> data;
+    File ExcelFile;
+    List<Object> intermediateState;
+
+    /**
+     * The trans method is transform the Excel file into an Integer List.
+     * Read the data and process it. Then group them and collect them to the List.
+     * There is dependency library we need to use to deal with the csv data.
+     * @param file input Excel data
+     * @return List of Integer that meet the framework's requirement format.
+     */
+    public List<Integer> trans(File file) {
+        this.ExcelFile = readData(file);
+        List<Integer> temp = changeFile(this.ExcelFile);
+        return temp;
+    }
+
+    /**
+     * Transfer the Excel file data to the List the framework need.
+     * @param excelFile the processed Excel File
+     * @return List of Integer that meet the framework input
+     */
+    private List<Integer> changeFile(File excelFile) {
+        return null;
+    }
+
+    /**
+     * Read the raw Excel file data to this.Excel File.
+     * @param file raw Excel file
+     * @return File that have been processed.
+     */
+    private File readData(File file) {
+        return null;
+    }
+
+    /**
+     * potential helper function to process and store the intermediate state.
+     */
+    private void helper() {
+        return;
+    }
+
+
+}
+
+```
+
+TwitterPlugin.java:
+```
+package edu.cmu.cs.cs214.rec10.plugin.dataPlugin;
+
+import java.io.File;
+import java.util.List;
+
+public class TwitterPlugin {
+    List<Integer> data;
+    File twitterFile;
+    List<Object> intermediateState;
+
+    /**
+     * The trans method is transform the Twitter data file into an Integer List.
+     * Read the data and process it. Then group them and collect them to the List.
+     * There is dependency library we need to use to deal with the csv data.
+     * @param file input Twitter data
+     * @return List of Integer that meet the framework's requirement format.
+     */
+    public List<Integer> trans(File file) {
+        this.twitterFile = readData(file);
+        List<Integer> temp = changeFile(this.twitterFile);
+        return temp;
+    }
+
+    /**
+     * Transfer the Twitter file data to the List the framework need.
+     * @param twitterFile the processed Excel File
+     * @return List of Integer that meet the framework input
+     */
+    private List<Integer> changeFile(File twitterFile) {
+        return null;
+    }
+
+    /**
+     * Read the raw Twitter file data to this.Twitter File.
+     * @param file raw Twitter file
+     * @return File that have been processed.
+     */
+    private File readData(File file) {
+        return null;
+    }
+
+    /**
+     * potential helper function to process and store the intermediate state.
+     */
+    private void helper() {
+        return;
+    }
+
+
+}
+
+```
+
+Visualization Plugin:
+
+GeoMapPlugin:
+```
+package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
+
+import java.util.List;
+
+public class GeoMapPlugin {
+    private Object map;
+    private List<Integer> data;
+    private List<String> outPut;
+    private List<Integer> intermediateState;
+
+    /**
+     * Transform the output data from the framework to be ready to render in the front-end.
+     * Store the answer to this.outPut
+     * @param input input from the framework
+     */
+    public void transform(List<Integer> input) {
+        this.intermediateState = tranData(input);
+        this.outPut = outPutData(this.intermediateState);
+    }
+
+    /**
+     * First step to transform the data from the framework to the intermediateState.
+     * @param input
+     * @return
+     */
+    private List<Integer> tranData(List<Integer> input) {
+        return null;
+    }
+
+    /**
+     * Second step to transform the data into suitable state that can be render in the front end.
+     * @param intermediateState intermediate state of output
+     * @return List of String to be render in the front-end
+     */
+    private List<String> outPutData(List<Integer> intermediateState) {
+        return null;
+    }
+
+    /**
+     * Potential transformation of intermediate state.
+     */
+    private void helper() {
+        return;
+    }
+}
+
+```
+
+PieChartPlugin:
+```
+package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
+
+import java.util.List;
+
+public class PieChartPlugin {
+    private Object PieChart;
+    private List<Integer> data;
+    private List<String> outPut;
+    private List<Integer> intermediateState;
+
+    /**
+     * Transform the output data from the framework to be ready to render in the front-end.
+     * Store the answer to this.outPut
+     * @param input input from the framework
+     */
+    public void transform(List<Integer> input) {
+        this.intermediateState = tranData(input);
+        this.outPut = outPutData(this.intermediateState);
+    }
+
+    /**
+     * First step to transform the data from the framework to the intermediateState.
+     * @param input
+     * @return
+     */
+    private List<Integer> tranData(List<Integer> input) {
+        return null;
+    }
+
+    /**
+     * Second step to transform the data into suitable state that can be render in the front end.
+     * @param intermediateState intermediate state of output
+     * @return List of String to be render in the front-end
+     */
+    private List<String> outPutData(List<Integer> intermediateState) {
+        return null;
+    }
+
+    /**
+     * Potential transformation of intermediate state.
+     */
+    private void helper() {
+        return;
+    }
+}
+
+```
+
+XYMapPlugin
+```
+package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
+
+import java.util.List;
+
+public class XYMapPlugin {
+    private Object XYMapChart;
+    private List<Integer> data;
+    private List<String> outPut;
+    private List<Integer> intermediateState;
+
+    /**
+     * Transform the output data from the framework to be ready to render in the front-end.
+     * Store the answer to this.outPut
+     * @param input input from the framework
+     */
+    public void transform(List<Integer> input) {
+        this.intermediateState = tranData(input);
+        this.outPut = outPutData(this.intermediateState);
+    }
+
+    /**
+     * First step to transform the data from the framework to the intermediateState.
+     * @param input
+     * @return
+     */
+    private List<Integer> tranData(List<Integer> input) {
+        return null;
+    }
+
+    /**
+     * Second step to transform the data into suitable state that can be render in the front end.
+     * @param intermediateState intermediate state of output
+     * @return List of String to be render in the front-end
+     */
+    private List<String> outPutData(List<Integer> intermediateState) {
+        return null;
+    }
+
+    /**
+     * Potential transformation of intermediate state.
+     */
+    private void helper() {
+        return;
+    }
+}
+
+```
