@@ -28,6 +28,16 @@ The `Visual Plugin`s provide functionality to present the data in an intuitive w
 
 ## Generality vs Specificity
 
+### Key Abstraction
+In this framework, the key abstraction is the intermediate data type. By transforming data in CSV files, Excel files, Twitter messages or other formats into a same intermediate state, the handle part of this framework deal with different files without knowing the details, it can be generic enough to accept various kinds of data sources. Since visual plugins just need to process data in intermediate state, this framework can also provide multiple visualizations like GeoMap graph, PieChart graph and so on.  Besides, the main task of the framework focuses on sorting and gathering data based on geographic features, its functinoality covers from like population migration to recent COVID virus development, so this framework is also specific enough to be reused in many kinds of fields.
+
+### Reusable Functionality
+No matter in which format, all the input data need to be sorted in time order and gathered into groups based on geometry features, so the sort function and gather function will be the core reusable functions. Besides, there are some more generic functions can be reused, like set descriptions of data or visualizations, get the size of input data, start and restart and so on.
+
+### Potential Flexibility of Plugins
+At the beginning, the data plugins of this framework have covered CSV files, Excel files and Twitter messages, and visualization plugins of this framework have covered classic table, geography heat map and line charts. And this framework is open to provide plugins to support more kinds of data format and display format. And the main task of a plugin is to accept data in a specific type into a generic type (intermediate state), lots parts of other jobs will be done by reusable parts. In the future, the framework may give support to different ways to choose plugins like accepting terminal command lines, reading configuration files and so on.
+
+
 ## Project Structure
 
 ### Organization of framework 
@@ -81,52 +91,92 @@ The plugins are loaded using java `ServiceLoader`. The paths for the plugin clas
 
 ## Plugin interfaces
 
-dataSet plugin code snippets:
+dataSet plugin interface
+```
+import java.io.File;
+import java.util.List;
+
+public interface DataPlugin {
+    /**
+     * The trans method is transform the raw file into an Integer List.
+     * Read the data and process it. Then group them and collect them to the List.
+     * There is dependency library we need to use to deal with the csv data.
+     * @param file input raw data
+     * @return List of Integer that meet the framework's requirement format.
+     */
+    public List<Integer> trans(File file);
+
+    /**
+     * Transfer the intermediate file data to the List the framework need.
+     * @param file the processed
+     * @return List of Integer that meet the framework input
+     */
+    public List<Integer> changeFile(File file);
+
+    /**
+     * Read the raw file data to File.
+     * @param file raw file
+     * @return File that have been processed.
+     */
+    public File readData(File file);
+
+    /**
+     * potential helper function to process and store the intermediate state.
+     */
+    public void helper();
+}
+
+```
 
 CSVPlugin.java:
 ```
-package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
+package edu.cmu.cs.cs214.rec10.plugin.dataPlugin;
 
+import edu.cmu.cs.cs214.rec10.framework.core.DataPlugin;
+
+import java.io.File;
 import java.util.List;
 
-public class XYMapPlugin {
-    private Object XYMapChart;
-    private List<Integer> data;
-    private List<String> outPut;
-    private List<Integer> intermediateState;
+public class CSVPlugin implements DataPlugin {
+    List<Integer> data;
+    File CSVFile;
+    List<Object> intermediateState;
 
     /**
-     * Transform the output data from the framework to be ready to render in the front-end.
-     * Store the answer to this.outPut
-     * @param input input from the framework
+     * The trans method is transform the cvs file into an Integer List.
+     * Read the data and process it. Then group them and collect them to the List.
+     * There is dependency library we need to use to deal with the csv data.
+     * @param file input csv data
+     * @return List of Integer that meet the framework's requirement format.
      */
-    public void transform(List<Integer> input) {
-        this.intermediateState = tranData(input);
-        this.outPut = outPutData(this.intermediateState);
+    public List<Integer> trans(File file) {
+        this.CSVFile = readData(file);
+        List<Integer> temp = changeFile(this.CSVFile);
+        return temp;
     }
 
     /**
-     * First step to transform the data from the framework to the intermediateState.
-     * @param input
-     * @return
+     * Transfer the CVS file data to the List the framework need.
+     * @param csvFile the processed CVSFile
+     * @return List of Integer that meet the framework input
      */
-    private List<Integer> tranData(List<Integer> input) {
+    public List<Integer> changeFile(File csvFile) {
         return null;
     }
 
     /**
-     * Second step to transform the data into suitable state that can be render in the front end.
-     * @param intermediateState intermediate state of output
-     * @return List of String to be render in the front-end
+     * Read the raw CSV file data to this.CSV File.
+     * @param file raw CVS file
+     * @return File that have been processed.
      */
-    private List<String> outPutData(List<Integer> intermediateState) {
+    public File readData(File file) {
         return null;
     }
 
     /**
-     * Potential transformation of intermediate state.
+     * helper function for potential using when transform data.
      */
-    private void helper() {
+    public void helper() {
         return;
     }
 }
@@ -137,10 +187,12 @@ ExcelPlugin.java:
 ```
 package edu.cmu.cs.cs214.rec10.plugin.dataPlugin;
 
+import edu.cmu.cs.cs214.rec10.framework.core.DataPlugin;
+
 import java.io.File;
 import java.util.List;
 
-public class ExcelPlugin {
+public class ExcelPlugin implements DataPlugin {
     List<Integer> data;
     File ExcelFile;
     List<Object> intermediateState;
@@ -163,7 +215,7 @@ public class ExcelPlugin {
      * @param excelFile the processed Excel File
      * @return List of Integer that meet the framework input
      */
-    private List<Integer> changeFile(File excelFile) {
+    public List<Integer> changeFile(File excelFile) {
         return null;
     }
 
@@ -172,17 +224,16 @@ public class ExcelPlugin {
      * @param file raw Excel file
      * @return File that have been processed.
      */
-    private File readData(File file) {
+    public File readData(File file) {
         return null;
     }
 
     /**
      * potential helper function to process and store the intermediate state.
      */
-    private void helper() {
+    public void helper() {
         return;
     }
-
 
 }
 
@@ -192,10 +243,12 @@ TwitterPlugin.java:
 ```
 package edu.cmu.cs.cs214.rec10.plugin.dataPlugin;
 
+import edu.cmu.cs.cs214.rec10.framework.core.DataPlugin;
+
 import java.io.File;
 import java.util.List;
 
-public class TwitterPlugin {
+public class TwitterPlugin implements DataPlugin {
     List<Integer> data;
     File twitterFile;
     List<Object> intermediateState;
@@ -218,7 +271,7 @@ public class TwitterPlugin {
      * @param twitterFile the processed Excel File
      * @return List of Integer that meet the framework input
      */
-    private List<Integer> changeFile(File twitterFile) {
+    public List<Integer> changeFile(File twitterFile) {
         return null;
     }
 
@@ -227,31 +280,66 @@ public class TwitterPlugin {
      * @param file raw Twitter file
      * @return File that have been processed.
      */
-    private File readData(File file) {
+    public File readData(File file) {
         return null;
     }
 
     /**
      * potential helper function to process and store the intermediate state.
      */
-    private void helper() {
+    public void helper() {
         return;
     }
-
 
 }
 
 ```
 
-Visualization Plugin:
+Visualization Plugin interface: 
+```
+package edu.cmu.cs.cs214.rec10.framework.core;
+
+import java.util.List;
+
+public interface VisualizationPlugin {
+    /**
+     * Transform the output data from the framework to be ready to render in the front-end.
+     * Store the answer to this.outPut
+     * @param input input from the framework
+     */
+    public void transform(List<Integer> input);
+
+    /**
+     * First step to transform the data from the framework to the intermediateState.
+     * @param input
+     * @return
+     */
+    public List<Integer> tranData(List<Integer> input);
+
+    /**
+     * Second step to transform the data into suitable state that can be render in the front end.
+     * @param intermediateState intermediate state of output
+     * @return List of String to be render in the front-end
+     */
+    public List<String> outPutData(List<Integer> intermediateState);
+
+    /**
+     * Potential transformation of intermediate state.
+     */
+    public void helper();
+}
+
+```
 
 GeoMapPlugin:
 ```
 package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
 
+import edu.cmu.cs.cs214.rec10.framework.core.VisualizationPlugin;
+
 import java.util.List;
 
-public class GeoMapPlugin {
+public class GeoMapPlugin implements VisualizationPlugin {
     private Object map;
     private List<Integer> data;
     private List<String> outPut;
@@ -272,7 +360,7 @@ public class GeoMapPlugin {
      * @param input
      * @return
      */
-    private List<Integer> tranData(List<Integer> input) {
+    public List<Integer> tranData(List<Integer> input) {
         return null;
     }
 
@@ -281,14 +369,14 @@ public class GeoMapPlugin {
      * @param intermediateState intermediate state of output
      * @return List of String to be render in the front-end
      */
-    private List<String> outPutData(List<Integer> intermediateState) {
+    public List<String> outPutData(List<Integer> intermediateState) {
         return null;
     }
 
     /**
      * Potential transformation of intermediate state.
      */
-    private void helper() {
+    public void helper() {
         return;
     }
 }
@@ -299,9 +387,11 @@ PieChartPlugin:
 ```
 package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
 
+import edu.cmu.cs.cs214.rec10.framework.core.VisualizationPlugin;
+
 import java.util.List;
 
-public class PieChartPlugin {
+public class PieChartPlugin implements VisualizationPlugin {
     private Object PieChart;
     private List<Integer> data;
     private List<String> outPut;
@@ -322,7 +412,7 @@ public class PieChartPlugin {
      * @param input
      * @return
      */
-    private List<Integer> tranData(List<Integer> input) {
+    public List<Integer> tranData(List<Integer> input) {
         return null;
     }
 
@@ -331,14 +421,14 @@ public class PieChartPlugin {
      * @param intermediateState intermediate state of output
      * @return List of String to be render in the front-end
      */
-    private List<String> outPutData(List<Integer> intermediateState) {
+    public List<String> outPutData(List<Integer> intermediateState) {
         return null;
     }
 
     /**
      * Potential transformation of intermediate state.
      */
-    private void helper() {
+    public void helper() {
         return;
     }
 }
@@ -349,9 +439,12 @@ XYMapPlugin
 ```
 package edu.cmu.cs.cs214.rec10.plugin.VisualizationPlugin;
 
+import edu.cmu.cs.cs214.rec10.framework.core.VisualizationPlugin;
+
+import javax.management.ValueExp;
 import java.util.List;
 
-public class XYMapPlugin {
+public class XYMapPlugin implements VisualizationPlugin {
     private Object XYMapChart;
     private List<Integer> data;
     private List<String> outPut;
@@ -372,7 +465,7 @@ public class XYMapPlugin {
      * @param input
      * @return
      */
-    private List<Integer> tranData(List<Integer> input) {
+    public List<Integer> tranData(List<Integer> input) {
         return null;
     }
 
@@ -381,14 +474,14 @@ public class XYMapPlugin {
      * @param intermediateState intermediate state of output
      * @return List of String to be render in the front-end
      */
-    private List<String> outPutData(List<Integer> intermediateState) {
+    public List<String> outPutData(List<Integer> intermediateState) {
         return null;
     }
 
     /**
      * Potential transformation of intermediate state.
      */
-    private void helper() {
+    public void helper() {
         return;
     }
 }
