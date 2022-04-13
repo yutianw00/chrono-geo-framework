@@ -4,6 +4,10 @@ import java.util.*;
 
 public interface DataPlugin<P> {
 
+    public String getName();
+
+    public String getIntro();
+
     public List<P> importDataFromFile(File file);
 
     public List<P> importDataFromAPI(String json);

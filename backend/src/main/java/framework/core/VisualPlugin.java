@@ -3,6 +3,10 @@ package framework.core;
 import java.util.*;
 
 public interface VisualPlugin {
+    public String getName();
+
+    public String getIntro();
+
     /**
      * Transform the output data from the framework to be ready to render in the front-end.
      * Store the answer to this.outPut
