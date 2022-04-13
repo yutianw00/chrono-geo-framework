@@ -29,6 +29,35 @@ body {
   color: #005da8;
 }
 
+/* cells and board */
+#board {
+  display: grid;
+  background-color: #66b8fc;
+  padding: 10px;
+  grid-template-columns: auto;
+  grid-gap: 10px;
+  margin: 0vmin 20% 0vmin 20%;
+}
+.cell {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  height: auto;
+  text-align: center;
+}
+
+.chosen {
+  background-color:antiquewhite;
+  color: red;
+}
+
+/* hide react template */
+.react {
+  visibility: hidden;
+  display: none;
+}
+
+/* ************************************************************************ */
 /* Dropdown Button */
 .dropbtn {
   width: 100%;
@@ -73,22 +102,7 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
-#board {
-  display: grid;
-  background-color: #66b8fc;
-  padding: 10px;
-  grid-template-columns: auto;
-  grid-gap: 10px;
-  margin: 0vmin 20% 0vmin 20%;
-}
-.cell {
-  background-color: rgba(255, 255, 255, 0.8);
-  /* border: 1px solid rgba(0, 0, 0, 0.8); */
-  padding: 20px;
-  font-size: 20px;
-  height: auto;
-  text-align: center;
-}
+
 #bottombar {
   height: 5vh;
 }
@@ -139,9 +153,6 @@ body {
   display: none;
 }
 
-.react {
-  visibility: hidden;
-  display: none;
-}
+
 
 .playable { background-color: red;}

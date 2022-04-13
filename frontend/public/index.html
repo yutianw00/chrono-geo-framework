@@ -93,9 +93,15 @@
     {{#each cells}}
     {{#if link}}
     <a href={{link}}>
-      <div class="cell">
-        {{text}}
+      {{#if chosen}}
+      <div class="cell chosen">
+        {{text}}: {{description}}
       </div>
+      {{else}}
+      <div class="cell">
+        {{text}}: {{description}}
+      </div>
+      {{/if}}
     </a>
     {{else}}
     <div class="cell">{{text}}</div>

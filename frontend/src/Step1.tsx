@@ -7,7 +7,8 @@ var oldHref = "http://localhost:3000"
 interface Cell {
   text: String;
   link: String;
-  description: String
+  description: String;
+  chosen: boolean;
 }
 
 
@@ -26,9 +27,8 @@ class Step1 extends Component<Props, MyState> {
     this.state = {
       template: this.loadTemplate(),
       cells: [
-        { text: "plugin 0", description: "d1", link: "dataplugin?1" },
-        { text: "plugin 1", description: "d2", link: "dataplugin?2" },
-        { text: "plugin 2", description: "d3", link: "dataplugin?3" },
+        { text: "dummy", description: "data dummy plugin for testing", link: "dataplugin?id=0", chosen: false },
+        { text: "dummy", description: "data dummy plugin for testing", link: "dataplugin?id=1", chosen: false },
       ],
     };
   }
@@ -40,11 +40,12 @@ class Step1 extends Component<Props, MyState> {
 
   convertToCell(p: any): Array<Cell> {
     const newCells: Array<Cell> = [];
-    for (var i = 0; i < p["cells"].length; i++) {
+    for (var i = 0; i < p["datacells"].length; i++) {
       var c: Cell = {
-        text: p["cells"][i]["text"],
-        description: p["cells"][i]["description"],
-        link: p["cells"][i]["link"],
+        text: p["datacells"][i]["name"],
+        description: p["datacells"][i]["description"],
+        link: p["datacells"][i]["link"],
+        chosen: p["datacells"][i]["chosen"]
       };
       newCells.push(c);
     }
