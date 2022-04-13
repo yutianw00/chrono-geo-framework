@@ -1,21 +1,22 @@
 package framework.core;
+import framework.core.utils.MyData;
+
 import java.io.File;
 import java.util.*;
 
-public interface DataPlugin<P> {
+public interface DataPlugin {
 
     public String getName();
 
     public String getIntro();
 
+    public List<MyData> importDataFromFile(String path);
 
-    public List<P> importDataFromFile(File file);
+    public List<MyData> importDataFromAPI(String json);
 
-    public List<P> importDataFromAPI(String json);
+    public boolean dataEqual(MyData d1, MyData d2);
 
-    public boolean compare(P d1, P d2);
-
-    public boolean shouldGroup(P d1, P d2);
+    public MyData group(MyData d1, MyData d2);
 
 //    /**
 //     * The trans method is transform the raw file into an Integer List.

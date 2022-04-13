@@ -18,7 +18,7 @@ public interface Framework {
 
     void restart();
 
-    void importData();
+    void importData(String str);
 
     void render();
 

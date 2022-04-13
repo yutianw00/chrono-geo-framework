@@ -1,5 +1,7 @@
 package framework.core;
 
+import framework.core.utils.MyData;
+
 import java.util.*;
 
 public interface VisualPlugin {
@@ -32,5 +34,11 @@ public interface VisualPlugin {
      * Potential transformation of intermediate state.
      */
     public void helper();
+
+    public String render(List<MyData> data);
+
+    public String graphTitle();
+
+    public String graphDescription();
 }
 

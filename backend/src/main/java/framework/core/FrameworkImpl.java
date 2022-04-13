@@ -1,20 +1,28 @@
 package framework.core;
 
+import framework.core.utils.MyData;
 import framework.gui.DataCell;
 import framework.gui.State;
 import framework.gui.VisualCell;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FrameworkImpl implements Framework{
 
-    List<DataPlugin> dataPlugins;
-    List<VisualPlugin> visualPlugins;
-    String renderHMTL = "";
+    private List<DataPlugin> dataPlugins;
+    private List<VisualPlugin> visualPlugins;
+    private String renderHMTL = "";
 
-    int chosenDataPluginId = -1;
-    int chosenVisualPluginId = -1;
+    private int chosenDataPluginId = -1;
+    private int chosenVisualPluginId = -1;
+
+    private List<MyData> data;
+    private List<MyData> groupedData;
+
+    private String graphTitle = "";
+    private String graphDescription = "";
 
     public FrameworkImpl() {
         dataPlugins = new ArrayList<>();
@@ -55,17 +63,28 @@ public class FrameworkImpl implements Framework{
             visualCells.add(vc);
         }
 
-        return new State(dataCells, visualCells, this.renderHMTL);
+        return new State(dataCells, visualCells, this.renderHMTL, this.graphTitle, this.graphDescription);
     }
 
     @Override
     public void sortData() {
-
+        Collections.sort(data, (d1, d2) -> (Long.compare(d1.getTime(), d2.getTime())));
     }
 
     @Override
     public void groupData() {
-
+        groupedData = new ArrayList<>();
+        MyData prevData = null;
+        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
+        for (MyData dt : data) {
+            if ((prevData != null) && dataPlugin.dataEqual(prevData, dt)) {
+                prevData = dataPlugin.group(prevData, dt);
+            } else {
+                groupedData.add(prevData);
+                prevData = dt;
+            }
+        }
+        groupedData.add(prevData);
     }
 
     @Override
@@ -80,12 +99,27 @@ public class FrameworkImpl implements Framework{
 
     @Override
     public void restart() {
+        dataPlugins = new ArrayList<>();
+        visualPlugins = new ArrayList<>();
+        renderHMTL = "";
 
+        chosenDataPluginId = -1;
+        chosenVisualPluginId = -1;
+
+        data = null;
+        groupedData = null;
+
+        graphTitle = "";
+        graphDescription = "";
     }
 
     @Override
-    public void importData() {
-
+    public void importData(String str) {
+        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
+        List<MyData> myData = dataPlugin.importDataFromAPI(str);
+        if (myData == null) {
+            myData = dataPlugin.importDataFromFile(str);
+        }
     }
 
     @Override
@@ -93,6 +127,15 @@ public class FrameworkImpl implements Framework{
         if (chosenDataPluginId == -1 || chosenVisualPluginId == -1) {
             System.out.println("plugin not chosen yet");
         }
+
+        sortData();
+        groupData();
+
+        VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
+        visualPlugin.render(groupedData);
+        graphTitle = visualPlugin.graphTitle();
+        graphDescription = visualPlugin.graphDescription();
+
         // TODO: do the actual render and set renderHTML
     }
 }

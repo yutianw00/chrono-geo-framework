@@ -8,8 +8,8 @@ import framework.core.Framework;
 import framework.core.FrameworkImpl;
 import framework.core.VisualPlugin;
 import framework.gui.State;
-import plugin.dataPlugin.dummyData.DummyData;
-import plugin.visualPlugin.dummyVisual.DummyVisual;
+import plugin.dataPlugin.dummyDataPlugin.DummyDataPlugin;
+import plugin.visualPlugin.dummyVisualPlugin.DummyVisualPlugin;
 
 public class App extends NanoHTTPD {
 
@@ -72,8 +72,8 @@ public class App extends NanoHTTPD {
     private static List<DataPlugin> loadDataPlugins() {
         List<DataPlugin> plugins = new ArrayList<>();
         // TODO: change the mock data
-        plugins.add(new DummyData());
-        plugins.add(new DummyData());
+        plugins.add(new DummyDataPlugin());
+        plugins.add(new DummyDataPlugin());
         return plugins;
     }
 
@@ -81,8 +81,8 @@ public class App extends NanoHTTPD {
         // TODO
         List<VisualPlugin> plugins = new ArrayList<>();
         // TODO: change the mock data
-        plugins.add(new DummyVisual());
-        plugins.add(new DummyVisual());
+        plugins.add(new DummyVisualPlugin());
+        plugins.add(new DummyVisualPlugin());
         return plugins;
     }
 

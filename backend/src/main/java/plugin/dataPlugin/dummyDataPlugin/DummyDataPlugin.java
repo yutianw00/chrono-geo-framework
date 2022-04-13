@@ -1,11 +1,12 @@
-package plugin.dataPlugin.dummyData;
+package plugin.dataPlugin.dummyDataPlugin;
 
 import framework.core.DataPlugin;
+import framework.core.utils.MyData;
 
 import java.io.File;
 import java.util.List;
 
-public class DummyData implements DataPlugin<Integer> {
+public class DummyDataPlugin implements DataPlugin {
 
     @Override
     public String getName() {
@@ -18,7 +19,7 @@ public class DummyData implements DataPlugin<Integer> {
     }
 
     @Override
-    public List importDataFromFile(File file) {
+    public List importDataFromFile(String path) {
         return null;
     }
 
@@ -28,12 +29,12 @@ public class DummyData implements DataPlugin<Integer> {
     }
 
     @Override
-    public boolean compare(Integer d1, Integer d2) {
+    public boolean dataEqual(MyData d1, MyData d2) {
         return false;
     }
 
     @Override
-    public boolean shouldGroup(Integer d1, Integer d2) {
-        return false;
+    public MyData group(MyData d1, MyData d2) {
+        return null;
     }
 }

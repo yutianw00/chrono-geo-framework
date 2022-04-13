@@ -1,10 +1,10 @@
-package plugin.visualPlugin.dummyVisual;
+package plugin.visualPlugin.dummyVisualPlugin;
 
 import framework.core.VisualPlugin;
 
 import java.util.List;
 
-public class DummyVisual implements VisualPlugin {
+public class DummyVisualPlugin implements VisualPlugin {
     @Override
     public String getName() {
         return "dummy Visual";
