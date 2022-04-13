@@ -6,6 +6,16 @@ import java.util.List;
 
 public class dummyVisual implements VisualPlugin {
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getIntro() {
+        return null;
+    }
+
+    @Override
     public void transform(List<Integer> input) {
 
     }

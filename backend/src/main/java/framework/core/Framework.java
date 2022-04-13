@@ -1,10 +1,14 @@
 package framework.core;
 
+import framework.gui.State;
+
 public interface Framework {
 
     void sortData();
 
     void groupData();
+
+    void chooseDataPlugin(int id);
 
     void registerDataPlugin(DataPlugin dataPlugin);
 
@@ -14,5 +18,7 @@ public interface Framework {
 
     void importData();
 
-    String render();
+    void render();
+
+    State getState();
 }

@@ -5,7 +5,18 @@ import framework.core.DataPlugin;
 import java.io.File;
 import java.util.List;
 
-public class dummyData implements DataPlugin {
+public class dummyData implements DataPlugin<Integer> {
+
+    @Override
+    public String getName() {
+        return "dummy";
+    }
+
+    @Override
+    public String getIntro() {
+        return "data dummy plugin for testing";
+    }
+
     @Override
     public List importDataFromFile(File file) {
         return null;
@@ -17,12 +28,12 @@ public class dummyData implements DataPlugin {
     }
 
     @Override
-    public boolean compare(Object d1, Object d2) {
+    public boolean compare(Integer d1, Integer d2) {
         return false;
     }
 
     @Override
-    public boolean shouldGroup(Object d1, Object d2) {
+    public boolean shouldGroup(Integer d1, Integer d2) {
         return false;
     }
 }

@@ -8,6 +8,7 @@ public interface DataPlugin<P> {
 
     public String getIntro();
 
+
     public List<P> importDataFromFile(File file);
 
     public List<P> importDataFromAPI(String json);
