@@ -27,6 +27,11 @@ public class FrameworkImpl implements Framework{
     }
 
     @Override
+    public void chooseVisualPlugin(int id) {
+        chosenVisualPluginId = id;
+    }
+
+    @Override
     public State getState() {
         List<DataCell> dataCells = new ArrayList<>();
         for (int i = 0; i < dataPlugins.size(); i++) {
@@ -46,6 +51,7 @@ public class FrameworkImpl implements Framework{
             if (i == chosenVisualPluginId) {
                 vc.setChosen(true);
             }
+            vc.setLink(i);
             visualCells.add(vc);
         }
 

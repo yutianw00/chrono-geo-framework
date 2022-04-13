@@ -2,15 +2,14 @@
 import java.io.IOException;
 import java.util.*;
 
-import com.github.jknack.handlebars.Handlebars;
-import com.github.jknack.handlebars.Template;
 import fi.iki.elonen.NanoHTTPD;
 import framework.core.DataPlugin;
 import framework.core.Framework;
 import framework.core.FrameworkImpl;
 import framework.core.VisualPlugin;
 import framework.gui.State;
-import plugin.dataPlugin.dummyData.dummyData;
+import plugin.dataPlugin.dummyData.DummyData;
+import plugin.visualPlugin.dummyVisual.DummyVisual;
 
 public class App extends NanoHTTPD {
 
@@ -52,10 +51,15 @@ public class App extends NanoHTTPD {
         if (uri.equals("/dataplugin")) {
             System.out.println("Request received: choose data plugin");
             app.chooseDataPlugin((Integer.parseInt(params.get("id"))));
-        } else if (uri.equals("render")){
+        } else if (uri.equals("/visualplugin")) {
+            System.out.println("Request received: choose visual plugin");
+            app.chooseVisualPlugin((Integer.parseInt(params.get("id"))));
+        } else if (uri.equals("/render")){
             app.render();
         } else if (uri.equals("/start")){
             app.restart();
+        } else if (uri.equals("/init")){
+            System.out.println("init render receives");
         }
         // Extract the view-specific data from the game and apply it to the template.
         State state = app.getState();
@@ -68,14 +72,18 @@ public class App extends NanoHTTPD {
     private static List<DataPlugin> loadDataPlugins() {
         List<DataPlugin> plugins = new ArrayList<>();
         // TODO: change the mock data
-        plugins.add(new dummyData());
-        plugins.add(new dummyData());
+        plugins.add(new DummyData());
+        plugins.add(new DummyData());
         return plugins;
     }
 
     private static List<VisualPlugin> loadVisualPlugins() {
         // TODO
-        return new ArrayList<>();
+        List<VisualPlugin> plugins = new ArrayList<>();
+        // TODO: change the mock data
+        plugins.add(new DummyVisual());
+        plugins.add(new DummyVisual());
+        return plugins;
     }
 
 //    /**

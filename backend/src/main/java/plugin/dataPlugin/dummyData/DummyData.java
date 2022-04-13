@@ -5,16 +5,16 @@ import framework.core.DataPlugin;
 import java.io.File;
 import java.util.List;
 
-public class dummyData implements DataPlugin<Integer> {
+public class DummyData implements DataPlugin<Integer> {
 
     @Override
     public String getName() {
-        return "dummy";
+        return "dummy Data";
     }
 
     @Override
     public String getIntro() {
-        return "data dummy plugin for testing";
+        return "DATA dummy plugin for testing";
     }
 
     @Override

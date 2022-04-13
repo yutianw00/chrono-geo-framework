@@ -4,15 +4,15 @@ import framework.core.VisualPlugin;
 
 import java.util.List;
 
-public class dummyVisual implements VisualPlugin {
+public class DummyVisual implements VisualPlugin {
     @Override
     public String getName() {
-        return null;
+        return "dummy Visual";
     }
 
     @Override
     public String getIntro() {
-        return null;
+        return "VISUAL dummy plugin for testing";
     }
 
     @Override

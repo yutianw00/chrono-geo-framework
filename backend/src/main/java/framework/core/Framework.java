@@ -10,6 +10,8 @@ public interface Framework {
 
     void chooseDataPlugin(int id);
 
+    void chooseVisualPlugin(int id);
+
     void registerDataPlugin(DataPlugin dataPlugin);
 
     void registerVisualPlugin(VisualPlugin visualPlugin);
