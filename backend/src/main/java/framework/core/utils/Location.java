@@ -24,4 +24,23 @@ public class Location {
     public void setLatitude(long latitude) {
         this.latitude = latitude;
     }
+
+    @Override
+    public int hashCode() {
+        return (int)(this.getLongtitude() * this.getLatitude());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Location)) {
+            return false;
+        }
+
+        return (((Location) obj).getLatitude() == this.getLatitude() &&
+                ((Location) obj).getLongtitude() == this.getLongtitude());
+    }
 }

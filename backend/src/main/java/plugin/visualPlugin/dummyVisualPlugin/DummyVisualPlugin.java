@@ -1,6 +1,7 @@
 package plugin.visualPlugin.dummyVisualPlugin;
 
 import framework.core.VisualPlugin;
+import framework.core.utils.MyData;
 
 import java.util.List;
 
@@ -16,22 +17,17 @@ public class DummyVisualPlugin implements VisualPlugin {
     }
 
     @Override
-    public void transform(List<Integer> input) {
-
-    }
-
-    @Override
-    public List<Integer> tranData(List<Integer> input) {
+    public String render(List<MyData> data) {
         return null;
     }
 
     @Override
-    public List<String> outPutData(List<Integer> intermediateState) {
+    public String graphTitle() {
         return null;
     }
 
     @Override
-    public void helper() {
-
+    public String graphDescription() {
+        return null;
     }
 }

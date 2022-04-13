@@ -116,9 +116,9 @@ public class FrameworkImpl implements Framework{
     @Override
     public void importData(String str) {
         DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
-        List<MyData> myData = dataPlugin.importDataFromAPI(str);
-        if (myData == null) {
-            myData = dataPlugin.importDataFromFile(str);
+        data = dataPlugin.importDataFromAPI(str);
+        if (data == null) {
+            data = dataPlugin.importDataFromFile(str);
         }
     }
 
