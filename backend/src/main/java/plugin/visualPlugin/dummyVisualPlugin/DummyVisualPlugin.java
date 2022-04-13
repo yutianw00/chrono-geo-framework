@@ -18,16 +18,20 @@ public class DummyVisualPlugin implements VisualPlugin {
 
     @Override
     public String render(List<MyData> data) {
-        return null;
+        String s = "<div>\n" +
+                "  <h2>This is a dummy content made by the visual plugin</h2>\n" +
+                "  <p>Assume there's a html graph here.</p>\n" +
+                "</div>";
+        return s;
     }
 
     @Override
     public String graphTitle() {
-        return null;
+        return "Dummy graph Title";
     }
 
     @Override
     public String graphDescription() {
-        return null;
+        return "This is a dummmy graph description";
     }
 }
