@@ -139,7 +139,5 @@ public class FrameworkImpl implements Framework{
         renderHMTL = visualPlugin.render(groupedData);
         graphTitle = visualPlugin.graphTitle();
         graphDescription = visualPlugin.graphDescription();
-
-        // TODO: do the actual render and set renderHTML
     }
 }

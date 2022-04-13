@@ -53,28 +53,6 @@ class Step1 extends Component<Props, MyState> {
     return newCells;
   }
 
-  /*
-  async start(){
-    const href = "start";
-    const response = await fetch(href);
-
-    const json = await response.json();
-    const newPlugins: Array<Plugin> = this.convertToPlugin(json);
-    this.setState({ plugins: newPlugins,})
-  }
-
-  async play(url: String) {
-    const href = "play?" + url.split("?")[1];
-    const response = await fetch(href);
-    const json = await response.json();
-
-    const newCells: Array<Cell> = this.convertToCell(json);
-    const newPlugins: Array<Plugin> = this.convertToPlugin(json);
-    this.setState({ cells: newCells, plugins: newPlugins, name: json["name"],footer:json["footer"], currentPlayer : json["currentPlayer"],
-                                                                                gameOverMsg : json["gameOverMsg"] })
-  }
-  */
-
   async chooseDataPlugin(url: String){
     const href = "dataplugin?"+url.split("?")[1];
     const response = await fetch(href);
@@ -107,19 +85,6 @@ class Step1 extends Component<Props, MyState> {
       this.initRender("http://localhost:3000/init");
       oldHref = window.location.href;
     }
-    // } else if (
-    //   window.location.href.split("?")[0] === "http://localhost:3000/play" &&
-    //   oldHref !== window.location.href
-    // ) {
-    //   this.play(window.location.href);
-    //   oldHref = window.location.href;
-    // } else if (
-    //   window.location.href === "http://localhost:3000/" ||
-    //   window.location.href === "http://localhost:3000/start"
-    // ){
-    //   this.start();
-    //   oldHref = window.location.href;
-    // }
   };
 
   render() {

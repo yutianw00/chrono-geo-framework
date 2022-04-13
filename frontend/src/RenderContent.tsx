@@ -1,11 +1,7 @@
-// import Handlebars from "handlebars"
 import { Component } from 'react'
 import './App.css'
 
 var oldHref = "http://localhost:3000"
-
-
-
 
 interface MyState {
   content: string
@@ -31,20 +27,6 @@ class RenderContent extends Component<Props, MyState> {
       content: json["renderhtml"]
     })
   }
-
-  
-  
-  /*
-  async initRender(url: String){
-    const href = url + "";
-    const response = await fetch(href);
-    const json = await response.json();
-
-    const newCells: Array<Cell> = this.convertToCell(json);
-    this.setState({ cells: newCells })
-  }
-  */
-
   
   async switch() {
     if (
