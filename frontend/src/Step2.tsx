@@ -20,32 +20,32 @@ interface MyState {
 interface Props {
 }
 
-class Step1 extends Component<Props, MyState> {
+class Step2 extends Component<Props, MyState> {
 
   constructor(props: Props) {
     super(props);
     this.state = {
       template: this.loadTemplate(),
       cells: [
-        { text: "dummy Data", description: "DATA dummy plugin for testing", link: "dataplugin?id=0", chosen: false },
-        { text: "dummy Data", description: "DATA dummy plugin for testing", link: "dataplugin?id=1", chosen: false },
+        { text: "dummy Visual", description: "VISUAL dummy plugin for testing", link: "visualplugin?id=0", chosen: false },
+        { text: "dummy Visual", description: "VISUAL dummy plugin for testing", link: "visualplugin?id=1", chosen: false },
       ],
     };
   }
 
   loadTemplate (): HandlebarsTemplateDelegate<any> {
-    const src = document.getElementById("react-step1-template");
+    const src = document.getElementById("react-step2-template");
     return Handlebars.compile(src?.innerHTML, {});
   }
 
   convertToCell(p: any): Array<Cell> {
     const newCells: Array<Cell> = [];
-    for (var i = 0; i < p["datacells"].length; i++) {
+    for (var i = 0; i < p["visualcells"].length; i++) {
       var c: Cell = {
-        text: p["datacells"][i]["name"],
-        description: p["datacells"][i]["description"],
-        link: p["datacells"][i]["link"],
-        chosen: p["datacells"][i]["chosen"]
+        text: p["visualcells"][i]["name"],
+        description: p["visualcells"][i]["description"],
+        link: p["visualcells"][i]["link"],
+        chosen: p["visualcells"][i]["chosen"]
       };
       newCells.push(c);
     }
@@ -75,15 +75,15 @@ class Step1 extends Component<Props, MyState> {
   }
   */
 
-  async chooseDataPlugin(url: String){
-    const href = "dataplugin?"+url.split("?")[1];
+  async chooseVisualPlugin(url: String){
+    const href = "visualplugin?"+url.split("?")[1];
     const response = await fetch(href);
     const json = await response.json();
 
     const newCells: Array<Cell> = this.convertToCell(json);
     this.setState({ cells: newCells })
   }
-  
+
   async initRender(url: String){
     const href = url + "";
     const response = await fetch(href);
@@ -92,14 +92,14 @@ class Step1 extends Component<Props, MyState> {
     const newCells: Array<Cell> = this.convertToCell(json);
     this.setState({ cells: newCells })
   }
-
+  
 
   async switch() {
     if (
-      window.location.href.split("?")[0] === "http://localhost:3000/dataplugin" &&
+      window.location.href.split("?")[0] === "http://localhost:3000/visualplugin" &&
       oldHref !== window.location.href
     ) {
-      this.chooseDataPlugin(window.location.href);
+      this.chooseVisualPlugin(window.location.href);
       oldHref = window.location.href;
     } else if (
       oldHref !== window.location.href // if request is called by the other React block
@@ -125,7 +125,7 @@ class Step1 extends Component<Props, MyState> {
   render() {
     this.switch()
     return (
-      <div className="Step1">
+      <div className="Step2">
         <div
           dangerouslySetInnerHTML={{
             __html: this.state.template({ 
@@ -139,4 +139,4 @@ class Step1 extends Component<Props, MyState> {
   };
 };
 
-export default Step1;
+export default Step2;

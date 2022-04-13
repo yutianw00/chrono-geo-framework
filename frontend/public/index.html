@@ -44,6 +44,9 @@
 <div id="step2" class="block">
   <h2 class="subtitle">Step 2: Choose Visualizer</h2>
   <p>Choose data visualizer here</p>
+
+  <div id="react-step2">
+  </div>
 </div>
 
 <div id="render" class="block">
@@ -89,6 +92,28 @@
 
 <!-- below are REACT template elements  -->
 <div id="react-step1-template" class="react">
+  <div id="board">
+    {{#each cells}}
+    {{#if link}}
+    <a href={{link}}>
+      {{#if chosen}}
+      <div class="cell chosen">
+        {{text}}: {{description}}
+      </div>
+      {{else}}
+      <div class="cell">
+        {{text}}: {{description}}
+      </div>
+      {{/if}}
+    </a>
+    {{else}}
+    <div class="cell">{{text}}</div>
+    {{/if}}
+    {{/each}}
+  </div>
+</div>
+
+<div id="react-step2-template" class="react">
   <div id="board">
     {{#each cells}}
     {{#if link}}
