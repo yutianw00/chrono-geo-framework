@@ -20,7 +20,7 @@ public interface Framework {
 
     void importData(String str);
 
-    void render();
+    void render(String str);
 
     State getState();
 }

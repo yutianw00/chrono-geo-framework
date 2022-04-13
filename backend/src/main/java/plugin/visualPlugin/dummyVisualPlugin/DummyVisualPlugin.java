@@ -18,9 +18,9 @@ public class DummyVisualPlugin implements VisualPlugin {
 
     @Override
     public String render(List<MyData> data) {
-        String s = "<div>\n" +
-                "  <h2>This is a dummy content made by the visual plugin</h2>\n" +
-                "  <p>Assume there's a html graph here.</p>\n" +
+        String s = "<div>" +
+                "  <h2>This is a dummy content made by the visual plugin</h2>" +
+                "  <p>Assume there's a html graph here.</p>" +
                 "</div>";
         return s;
     }

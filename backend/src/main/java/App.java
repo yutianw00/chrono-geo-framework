@@ -55,8 +55,8 @@ public class App extends NanoHTTPD {
             System.out.println("Request received: choose visual plugin");
             app.chooseVisualPlugin((Integer.parseInt(params.get("id"))));
         } else if (uri.equals("/render")){
-            app.render();
-        } else if (uri.equals("/start")){
+            app.render(params.get("str"));
+        } else if (uri.equals("/reset")){
             app.restart();
         } else if (uri.equals("/init")){
             System.out.println("init render receives");
@@ -86,19 +86,5 @@ public class App extends NanoHTTPD {
         return plugins;
     }
 
-//    /**
-//     * Load plugins listed in META-INF/services/...
-//     *
-//     * @return List of instantiated plugins
-//     */
-//    private static List<GamePlugin> loadPlugins() {
-//        ServiceLoader<GamePlugin> plugins = ServiceLoader.load(GamePlugin.class);
-//        List<GamePlugin> result = new ArrayList<>();
-//        for (GamePlugin plugin : plugins) {
-//            System.out.println("Loaded plugin " + plugin.getGameName());
-//            result.add(plugin);
-//        }
-//        return result;
-//    }
 }
 

@@ -123,16 +123,20 @@ public class FrameworkImpl implements Framework{
     }
 
     @Override
-    public void render() {
+    public void render(String str) {
         if (chosenDataPluginId == -1 || chosenVisualPluginId == -1) {
             System.out.println("plugin not chosen yet");
+            return;
         }
+
+        System.out.println("Rendering data from source " + str + "......");
+        importData(str);
 
         sortData();
         groupData();
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
-        visualPlugin.render(groupedData);
+        renderHMTL = visualPlugin.render(groupedData);
         graphTitle = visualPlugin.graphTitle();
         graphDescription = visualPlugin.graphDescription();
 
