@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // import App from './App';
 import Step1 from './Step1';
 import Step2 from './Step2';
+import RenderContent from './RenderContent'
 
 // ReactDOM.render(
 //     <App />,
@@ -19,3 +20,7 @@ ReactDOM.render(
   document.getElementById('react-step2')
 );
 
+ReactDOM.render(
+  <RenderContent />,
+  document.getElementById('render-graph')
+);

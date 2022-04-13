@@ -51,6 +51,14 @@ body {
   color: red;
 }
 
+#footer {
+  background-color: #e9f7ff;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  line-height: 80%;
+}
+
 /* hide react template */
 .react {
   visibility: hidden;
@@ -123,14 +131,7 @@ body {
   float: left;
   font-size: 2vw
 }
-#footer {
-  height: 5vh;
-  background-color: white;
-  padding: 0px;
-  margin: 0px;
-  text-align: center;
-  border: 1px solid black;
-}
+
 #current_player_name {
    height: 5vh;
    background-color: white;

@@ -3,7 +3,7 @@
 
 <head>
     <title>Framework</title>
-    <script>
+    <!-- <script>
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
   function myFunction() {
@@ -23,7 +23,7 @@
       }
     }
   }
-  </script>
+  </script> -->
 
 </head>
 
@@ -51,44 +51,22 @@
 
 <div id="render" class="block">
   <h2 class="subtitle">Step 3: Render Visualization!</h2>
-  <button class="main_button">Render</button>
+  <form action="/render">
+    <label for="str">File Path: </label>
+    <input type="text" id="str" name="str" value=""><br><br>
+    <input type="submit" value="Render">
+  </form>
   <p class="err">Error message here</p>
+  <div id="render-graph"></div>
+  <br><br>
 </div>
 
-<!-- <div id="root" class="block"> -->
-  <!-- passing from the backend on success -->
-<!-- </div> -->
-
-<!-- below were original recitation contents -->
-
-<!-- <div id="handlebars">
-<div id="game_name">{{name}}</div>
-{{#if gameOverMsg}}
-<div id="game_over_message">{{gameOverMsg}}</div>
-{{else}}
-{{#if currentPlayer}}
-<div id="current_player_name">Current player is {{currentPlayer}}</div>
-{{/if}}
-{{/if}}
-<div id="board" style="grid-template-columns: {{numColStyle}}">
-    {{#each cells}}
-    {{#if link}}
-    <a href={{link}}><div class="cell {{clazz}}">{{text}}</div></a>
-    {{else}}
-    <div class="cell {{clazz}}">{{text}}</div>
-    {{/if}}
-    {{/each}}
+<div id="footer">
+  <br>
+  <p>A framework project for CMU 17-214/514 Spring 2022 | Author: Xupeng Shi, Yihang Liu, Yutian Wang</p>
+  <br>
 </div>
-<div id="footer">{{footer}}</div>
-<div id="bottombar">
-    <button onclick="myFunction()" class="dropbtn">New Game</button>
-    <div id="myDropdown" class="dropdown-content">
-        {{#each plugins}}
-        <a href="{{link}}">{{name}}</a>
-        {{/each}}
-    </div>
-</div>
-</div> -->
+
 
 <!-- below are REACT template elements  -->
 <div id="react-step1-template" class="react">
@@ -112,6 +90,7 @@
     {{/each}}
   </div>
 </div>
+
 
 <div id="react-step2-template" class="react">
   <div id="board">
