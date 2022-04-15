@@ -1,4 +1,4 @@
-package plugin.dataPlugin.dummyDataPlugin;
+package plugin.dataPlugin.csvDataPlugin;
 
 import framework.core.DataPlugin;
 import framework.core.utils.Location;
