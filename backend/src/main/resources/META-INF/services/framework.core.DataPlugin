@@ -1,0 +1,5 @@
+# List of DATA plugins to be registered by framework.
+# Provide fully qualified class names here ( plugin.dataPlugin.XXX ),
+# with one plugin per line.
+plugin.dataPlugin.dummyDataPlugin.DummyDataPlugin
+plugin.dataPlugin.csvDataPlugin.CSVDataPlugin

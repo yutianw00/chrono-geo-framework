@@ -14,7 +14,7 @@ import java.util.List;
 public class CSVDataPlugin implements DataPlugin {
     @Override
     public String getName() {
-        return null;
+        return "CSVDataPlugin";
     }
 
     @Override

@@ -21,14 +21,14 @@ public interface VisualPlugin {
     String getIntro();
 
     /**
-     * Get the rendering frontend HTML codes for the visual plot
-     *  from the data provided
+     * create a new html file (for example, index.html) in the folder,
+     * and automatically open that rendered webpage, return the result of
+     * rendering
      *
-     * @param data The data provided (sorted and grouped) by the framework
-     * @return the rendering html codes that will appear on the frontend
-     *  the returning HTML codes need to be surrounded by a outer <div></div>
+     * @param data the data take in for visualization to render
+     * @return true if render succeed; false if render failed
      */
-    String render(List<MyData> data);
+    boolean render(List<MyData> data);
 
     /**
      * get the title of the rendered visual plot

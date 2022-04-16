@@ -33,6 +33,27 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.58</version>
         </dependency>
+        <dependency>
+            <groupId>org.icepear.echarts</groupId>
+            <artifactId>echarts-java</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.tablesaw</groupId>
+            <artifactId>tablesaw-core</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.tablesaw</groupId>
+            <artifactId>tablesaw-jsplot</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.19</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -55,6 +76,7 @@
                     </arguments>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
