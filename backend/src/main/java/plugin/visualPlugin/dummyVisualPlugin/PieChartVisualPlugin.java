@@ -19,7 +19,7 @@ public class PieChartVisualPlugin implements VisualPlugin {
     }
 
     @Override
-    public boolean render(List<MyData> data) {
+    public void render(List<MyData> data) {
         return false;
     }
 

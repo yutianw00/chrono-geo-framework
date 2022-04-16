@@ -17,7 +17,7 @@ public class DummyVisualPlugin implements VisualPlugin {
     }
 
     @Override
-    public boolean render(List<MyData> data) {
+    public void render(List<MyData> data) {
         System.out.println("Rendering complete!");
         return true;
     }

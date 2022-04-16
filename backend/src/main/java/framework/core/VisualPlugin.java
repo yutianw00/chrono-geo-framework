@@ -26,9 +26,8 @@ public interface VisualPlugin {
      * rendering
      *
      * @param data the data take in for visualization to render
-     * @return true if render succeed; false if render failed
      */
-    boolean render(List<MyData> data);
+    void render(List<MyData> data);
 
     /**
      * get the title of the rendered visual plot
