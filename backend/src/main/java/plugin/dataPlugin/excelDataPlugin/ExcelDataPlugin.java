@@ -39,16 +39,15 @@ public class ExcelDataPlugin implements DataPlugin {
                 for (int i = firstRow; i <= lastRow; i++) {
                     Row row = sheet.getRow(i);
                     if (row != null) {
-                        double longtitude = Double.valueOf(row.getCell(6).toString());
+                        double longitude = Double.valueOf(row.getCell(6).toString());
                         double latitude = Double.valueOf(row.getCell(5).toString());
                         String[] date = row.getCell(2).toString().split("-");
                         long year = Long.valueOf(date[0]);
                         double data = Double.valueOf(row.getCell(1).toString());
-                        records.add(new MyData(new Location((long)longtitude, (long)latitude), year, data));
+                        records.add(new MyData(new Location((long)longitude, (long)latitude), year, data));
                     }
                 }
             }
-
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
         } catch (IOException e) {
