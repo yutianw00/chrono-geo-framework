@@ -28,6 +28,24 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>tech.tablesaw</groupId>
+            <artifactId>tablesaw-core</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.tablesaw</groupId>
+            <artifactId>tablesaw-jsplot</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+        <!--用于生成图片  -->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.19</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -50,6 +68,7 @@
                     </arguments>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
