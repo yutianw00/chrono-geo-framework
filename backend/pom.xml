@@ -29,6 +29,11 @@
             <version>5.0.0</version>
         </dependency>
         <dependency>
+            <groupId>org.icepear.echarts</groupId>
+            <artifactId>echarts-java</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-core</artifactId>
             <version>LATEST</version>

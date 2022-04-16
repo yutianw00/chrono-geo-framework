@@ -136,7 +136,7 @@ public class FrameworkImpl implements Framework{
         groupData();
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
-        renderHMTL = visualPlugin.render(groupedData);
+        visualPlugin.render(groupedData);
         graphTitle = visualPlugin.graphTitle();
         graphDescription = visualPlugin.graphDescription();
     }
