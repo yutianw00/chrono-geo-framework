@@ -11,6 +11,8 @@ import framework.gui.State;
 import plugin.dataPlugin.dummyDataPlugin.DummyDataPlugin;
 import plugin.visualPlugin.dummyVisualPlugin.DummyVisualPlugin;
 
+import javax.xml.crypto.Data;
+
 public class App extends NanoHTTPD {
 
     public static void main(String[] args) {
@@ -68,15 +70,39 @@ public class App extends NanoHTTPD {
 
     }
 
-
+    /**
+     * Load data plugins listed in META-INF/services/framework.core.DataPlugin
+     *
+     * @return List of instantiated data plugins
+     */
     private static List<DataPlugin> loadDataPlugins() {
-        List<DataPlugin> plugins = new ArrayList<>();
-        // TODO: change the mock data
-        plugins.add(new DummyDataPlugin());
-        plugins.add(new DummyDataPlugin());
-        return plugins;
+        ServiceLoader<DataPlugin> plugins = ServiceLoader.load(DataPlugin.class);
+
+        List<DataPlugin> result = new ArrayList<>();
+        for (DataPlugin plugin : plugins) {
+            System.out.println("Loaded DATA plugin " + plugin.getName());
+            result.add(plugin);
+        }
+        return result;
     }
 
+    /**
+     * Load data plugins listed in META-INF/services/framework.core.VisualPlugin
+     *
+     * @return List of instantiated visual plugins
+     */
+    private static List<VisualPlugin> loadVisualPlugins() {
+        ServiceLoader<VisualPlugin> plugins = ServiceLoader.load(VisualPlugin.class);
+
+        List<VisualPlugin> result = new ArrayList<>();
+        for (VisualPlugin plugin : plugins) {
+            System.out.println("Loaded VISUAL plugin " + plugin.getName());
+            result.add(plugin);
+        }
+        return result;
+    }
+
+    /*
     private static List<VisualPlugin> loadVisualPlugins() {
         // TODO
         List<VisualPlugin> plugins = new ArrayList<>();
@@ -85,6 +111,7 @@ public class App extends NanoHTTPD {
         plugins.add(new DummyVisualPlugin());
         return plugins;
     }
+    */
 
 }
 
