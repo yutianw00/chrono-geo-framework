@@ -25,6 +25,7 @@ public class FrameworkImpl implements Framework{
     private String graphDescription = "";
 
     private String errMsg = "";
+    private boolean finishRendered = false;
 
     public FrameworkImpl() {
         dataPlugins = new ArrayList<>();
@@ -66,7 +67,7 @@ public class FrameworkImpl implements Framework{
         }
 
         return new State(dataCells, visualCells, this.renderHMTL, this.graphTitle,
-                this.graphDescription, this.errMsg);
+                this.graphDescription, this.errMsg, this.finishRendered);
     }
 
     @Override
@@ -102,8 +103,6 @@ public class FrameworkImpl implements Framework{
 
     @Override
     public void restart() {
-        dataPlugins = new ArrayList<>();
-        visualPlugins = new ArrayList<>();
         renderHMTL = "";
 
         chosenDataPluginId = -1;
@@ -114,6 +113,9 @@ public class FrameworkImpl implements Framework{
 
         graphTitle = "";
         graphDescription = "";
+
+        errMsg = "";
+        finishRendered = false;
     }
 
     @Override
@@ -131,12 +133,13 @@ public class FrameworkImpl implements Framework{
 
     @Override
     public void render(String str) {
+        finishRendered = true;
         if (chosenDataPluginId == -1 || chosenVisualPluginId == -1) {
             System.out.println("plugin not chosen yet");
             errMsg = "Cannot render: please choose a data plugin AND a visual plugin";
             return;
         }
-        
+
         System.out.println("Rendering data from source " + str + "......");
         importData(str);
 

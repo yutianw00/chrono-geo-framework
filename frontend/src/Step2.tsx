@@ -70,6 +70,15 @@ class Step2 extends Component<Props, MyState> {
     const newCells: Array<Cell> = this.convertToCell(json);
     this.setState({ cells: newCells })
   }
+
+  async reset(url: String){
+    const href = url + "";
+    const response = await fetch(href);
+    const json = await response.json();
+
+    const newCells: Array<Cell> = this.convertToCell(json);
+    this.setState({ cells: newCells })
+  }
   
 
   async switch() {
@@ -78,6 +87,12 @@ class Step2 extends Component<Props, MyState> {
       oldHref !== window.location.href
     ) {
       this.chooseVisualPlugin(window.location.href);
+      oldHref = window.location.href;
+    } else if (
+      window.location.href.split("?")[0] === "http://localhost:3000/reset" &&
+      oldHref !== window.location.href 
+    ) {
+      this.reset(window.location.href);
       oldHref = window.location.href;
     } else if (
       oldHref !== window.location.href // if request is called by the other React block

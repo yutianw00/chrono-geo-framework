@@ -56,6 +56,7 @@ public class App extends NanoHTTPD {
             System.out.println("Request received: Render");
             app.render(params.get("str"));
         } else if (uri.equals("/reset")){
+            System.out.println("Request received: Reset");
             app.restart();
         } else if (uri.equals("/init")){
             System.out.println("init render receives");
