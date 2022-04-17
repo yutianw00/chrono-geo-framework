@@ -3,3 +3,4 @@
 # with one plugin per line.
 plugin.dataPlugin.dummyDataPlugin.DummyDataPlugin
 plugin.dataPlugin.csvDataPlugin.CSVDataPlugin
+plugin.dataPlugin.apiDataPlugin.ApiDataPlugin

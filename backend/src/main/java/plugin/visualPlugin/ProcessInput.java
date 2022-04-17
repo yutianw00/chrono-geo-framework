@@ -1,4 +1,4 @@
-package plugin.visualPlugin.dummyVisualPlugin;
+package plugin.visualPlugin;
 
 import framework.core.utils.MyData;
 import tech.tablesaw.api.DoubleColumn;

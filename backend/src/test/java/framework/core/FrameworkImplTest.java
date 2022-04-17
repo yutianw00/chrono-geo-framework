@@ -6,7 +6,7 @@ import framework.gui.VisualCell;
 import org.junit.Before;
 import org.junit.Test;
 import plugin.dataPlugin.dummyDataPlugin.DummyDataPlugin;
-import plugin.visualPlugin.dummyVisualPlugin.DummyPlugin.DummyVisualPlugin;
+import plugin.visualPlugin.DummyPlugin.DummyVisualPlugin;
 
 import java.util.List;
 

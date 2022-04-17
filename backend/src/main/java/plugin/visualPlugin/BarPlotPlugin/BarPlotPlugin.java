@@ -1,24 +1,16 @@
-package plugin.visualPlugin.dummyVisualPlugin.BarPlotPlugin;
+package plugin.visualPlugin.BarPlotPlugin;
 
 
 import static tech.tablesaw.aggregate.AggregateFunctions.sum;
 
 import framework.core.VisualPlugin;
-import framework.core.utils.Location;
 import framework.core.utils.MyData;
-import plugin.visualPlugin.dummyVisualPlugin.ProcessInput;
-import tech.tablesaw.api.DoubleColumn;
-import tech.tablesaw.api.LongColumn;
+import plugin.visualPlugin.ProcessInput;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.Plot;
 import tech.tablesaw.plotly.api.HorizontalBarPlot;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.DoubleStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 public class BarPlotPlugin implements VisualPlugin {
 

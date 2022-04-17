@@ -1,4 +1,4 @@
-package plugin.visualPlugin.dummyVisualPlugin.DummyPlugin;
+package plugin.visualPlugin.DummyPlugin;
 
 import framework.core.VisualPlugin;
 import framework.core.utils.MyData;

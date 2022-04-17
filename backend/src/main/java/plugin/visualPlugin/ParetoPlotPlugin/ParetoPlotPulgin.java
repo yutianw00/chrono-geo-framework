@@ -1,11 +1,10 @@
-package plugin.visualPlugin.dummyVisualPlugin.ParetoPlotPlugin;
+package plugin.visualPlugin.ParetoPlotPlugin;
 
 import framework.core.VisualPlugin;
 import framework.core.utils.MyData;
-import plugin.visualPlugin.dummyVisualPlugin.ProcessInput;
+import plugin.visualPlugin.ProcessInput;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.plotly.Plot;
-import tech.tablesaw.plotly.api.HorizontalBarPlot;
 import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Layout;
 import tech.tablesaw.plotly.traces.BarTrace;
