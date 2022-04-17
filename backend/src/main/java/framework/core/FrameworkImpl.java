@@ -1,13 +1,12 @@
 package framework.core;
 
+import framework.core.utils.Location;
 import framework.core.utils.MyData;
 import framework.gui.DataCell;
 import framework.gui.State;
 import framework.gui.VisualCell;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class FrameworkImpl implements Framework{
 
@@ -19,7 +18,6 @@ public class FrameworkImpl implements Framework{
     private int chosenVisualPluginId = -1;
 
     private List<MyData> data;
-    private List<MyData> groupedData;
 
     private String graphTitle = "";
     private String graphDescription = "";
@@ -77,18 +75,43 @@ public class FrameworkImpl implements Framework{
 
     @Override
     public void groupData() {
-        groupedData = new ArrayList<>();
-        MyData prevData = null;
-        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
+        Map<String, List<MyData>> dataMap = new HashMap<>();
         for (MyData dt : data) {
-            if ((prevData != null) && dataPlugin.dataEqual(prevData, dt)) {
-                prevData = dataPlugin.group(prevData, dt);
-            } else {
-                groupedData.add(prevData);
-                prevData = dt;
-            }
+            Location loc = dt.getLocation();
+            long longitude = loc.getLongtitude();
+            long latitude = loc.getLatitude();
+            long time = dt.getTime();
+            String hash = longitude + "," + latitude + "," + time;
+            List<MyData> lst = dataMap.getOrDefault(hash, new ArrayList<>());
+            lst.add(dt);
+            dataMap.put(hash, lst);
         }
-        groupedData.add(prevData);
+
+        List<MyData> groupedData = new ArrayList<>();
+        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
+
+        for (Map.Entry<String, List<MyData>> entry : dataMap.entrySet()) {
+            List<MyData> myDataList = (List<MyData>) entry.getValue();
+            MyData acc = myDataList.get(0);
+            for (int i = 1; i < myDataList.size(); i++) {
+                acc = dataPlugin.group(acc, myDataList.get(i));
+            }
+            groupedData.add(acc);
+        }
+
+        data = groupedData;
+
+//        MyData prevData = null;
+//        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
+//        for (MyData dt : data) {
+//            if ((prevData != null) && dataPlugin.dataEqual(prevData, dt)) {
+//                prevData = dataPlugin.group(prevData, dt);
+//            } else {
+//                groupedData.add(prevData);
+//                prevData = dt;
+//            }
+//        }
+//        groupedData.add(prevData);
     }
 
     @Override
@@ -109,7 +132,7 @@ public class FrameworkImpl implements Framework{
         chosenVisualPluginId = -1;
 
         data = null;
-        groupedData = null;
+//        groupedData = null;
 
         graphTitle = "";
         graphDescription = "";
@@ -147,11 +170,11 @@ public class FrameworkImpl implements Framework{
             return;
         }
 
-        sortData();
         groupData();
+        sortData();
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
-        boolean res = visualPlugin.render(groupedData);
+        boolean res = visualPlugin.render(data);
         if (!res) {
             errMsg = "Render err: rendering failed";
         } else {

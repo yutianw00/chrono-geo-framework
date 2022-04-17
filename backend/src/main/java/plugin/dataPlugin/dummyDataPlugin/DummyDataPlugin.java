@@ -32,8 +32,9 @@ public class DummyDataPlugin implements DataPlugin {
         MyData d8 = new MyData(new Location(40,10), 2011, 800);
         MyData d9 = new MyData(new Location(50,10), 2011, 300);
         MyData d10 = new MyData(new Location(80,10), 2010, 100);
+        MyData d11 = new MyData(new Location(10,10), 2010, 1000);
 
-        return Arrays.asList(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10);
+        return Arrays.asList(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11);
     }
 
     @Override

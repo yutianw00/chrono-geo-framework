@@ -72,17 +72,44 @@ public class FrameworkImplTest {
         framework.importData("");
         framework.sortData();
         framework.render("");
+        /* will inspect manually that the test data is sorted by time,
+         * as the data field is private because of INFORMATION HIDING,
+         * and we have no access to it in the test except printing it
+         * */
     }
 
     @Test
     public void groupData() {
+        framework.chooseDataPlugin(0);
+        framework.chooseVisualPlugin(0);
+        framework.importData("");
+        framework.groupData();
+        framework.render("");
+        /* will inspect manually that the test data is grouped,
+         * as the data field is private because of INFORMATION HIDING,
+         * and we have no access to it in the test except printing it
+         * */
     }
 
     @Test
     public void restart() {
+        framework.restart();
+        State state = framework.getState();
+        assertTrue(state.getStatus().equals(""));
+        assertTrue(state.getErrMsg().equals(""));
+        assertFalse(state.getDataCells().get(0).isChosen());
+        assertFalse(state.getDataCells().get(1).isChosen());
+        assertFalse(state.getVisualCells().get(0).isChosen());
     }
 
     @Test
     public void render() {
+        framework.chooseDataPlugin(0);
+        framework.chooseVisualPlugin(0);
+        framework.render("");
+        /* will inspect manually that the test data is grouped,
+         * as the data field is private because of INFORMATION HIDING,
+         * and we have no access to it in the test except printing it
+         * */
     }
 }
