@@ -32,7 +32,7 @@ public class ParetoPlotPulgin implements VisualPlugin {
         // BAR PLOTS
 
         // Sum the number of fatalities from each tornado, grouping by scale
-        Table fatalities1 = table.summarize("data", sum).by("timeColumn");
+        Table fatalities1 = table.summarize("data", sum).by("time");
 
         fatalities1 = fatalities1.sortDescendingOn(fatalities1.column(1).name());
         Layout layout = Layout.builder().title("data by time").build();
