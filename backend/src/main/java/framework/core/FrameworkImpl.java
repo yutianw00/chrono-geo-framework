@@ -25,6 +25,8 @@ public class FrameworkImpl implements Framework{
     private String errMsg = "";
     private boolean finishRendered = false;
 
+    private int predictNum = 0;
+
     public FrameworkImpl() {
         dataPlugins = new ArrayList<>();
         visualPlugins = new ArrayList<>();
@@ -65,7 +67,7 @@ public class FrameworkImpl implements Framework{
         }
 
         return new State(dataCells, visualCells, this.renderHMTL, this.graphTitle,
-                this.graphDescription, this.errMsg, this.finishRendered);
+                this.graphDescription, this.errMsg, this.finishRendered, this.predictNum);
     }
 
     @Override
@@ -78,8 +80,8 @@ public class FrameworkImpl implements Framework{
         Map<String, List<MyData>> dataMap = new HashMap<>();
         for (MyData dt : data) {
             Location loc = dt.getLocation();
-            long longitude = loc.getLongtitude();
-            long latitude = loc.getLatitude();
+            double longitude = loc.getLongtitude();
+            double latitude = loc.getLatitude();
             long time = dt.getTime();
             String hash = longitude + "," + latitude + "," + time;
             List<MyData> lst = dataMap.getOrDefault(hash, new ArrayList<>());
@@ -100,18 +102,6 @@ public class FrameworkImpl implements Framework{
         }
 
         data = groupedData;
-
-//        MyData prevData = null;
-//        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
-//        for (MyData dt : data) {
-//            if ((prevData != null) && dataPlugin.dataEqual(prevData, dt)) {
-//                prevData = dataPlugin.group(prevData, dt);
-//            } else {
-//                groupedData.add(prevData);
-//                prevData = dt;
-//            }
-//        }
-//        groupedData.add(prevData);
     }
 
     @Override
@@ -132,13 +122,13 @@ public class FrameworkImpl implements Framework{
         chosenVisualPluginId = -1;
 
         data = null;
-//        groupedData = null;
 
         graphTitle = "";
         graphDescription = "";
 
         errMsg = "";
         finishRendered = false;
+        predictNum = 0;
     }
 
     @Override
@@ -172,6 +162,12 @@ public class FrameworkImpl implements Framework{
 
         groupData();
         sortData();
+
+        DataPlugin chosenDataplugin = dataPlugins.get(chosenDataPluginId);
+        predictNum = chosenDataplugin.predictFuture();
+
+        Predictor.predict(data, predictNum);
+
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
         boolean res = visualPlugin.render(data);

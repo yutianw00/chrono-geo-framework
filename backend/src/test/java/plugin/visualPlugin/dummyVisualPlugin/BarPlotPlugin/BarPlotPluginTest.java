@@ -16,7 +16,7 @@ public class BarPlotPluginTest extends TestCase {
     BarPlotPlugin barPlotPlugin = new BarPlotPlugin();
     MyData data1 = new MyData(new Location(1, 1), 2, 3.0);
     MyData data2 = new MyData(new Location(1, 1), 4, 6.0);
-    MyData data3 = new MyData(new Location(1, 1), 6, 9.0);
+    MyData data3 = new MyData(new Location(1, 2), 6, 9.0);
 
 
     @Before

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelDataPlugin implements DataPlugin {
+    private static int PREDICTNUM = -1;
+
     @Override
     public String getName() {
         return null;
@@ -69,5 +71,10 @@ public class ExcelDataPlugin implements DataPlugin {
     @Override
     public MyData group(MyData d1, MyData d2) {
         return null;
+    }
+
+    @Override
+    public int predictFuture() {
+        return PREDICTNUM;
     }
 }

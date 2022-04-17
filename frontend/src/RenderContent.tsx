@@ -7,6 +7,7 @@ var oldHref = "http://localhost:3000"
 interface MyState {
   status: string,
   errMsg: string,
+  predictMsg: string,
   template: HandlebarsTemplateDelegate<any>;
 }
 
@@ -20,7 +21,8 @@ class RenderContent extends Component<Props, MyState> {
     this.state = {
       template: this.loadTemplate(),
       status: "",
-      errMsg: ""
+      errMsg: "",
+      predictMsg: ""
     };
   }
 
@@ -32,6 +34,7 @@ class RenderContent extends Component<Props, MyState> {
     this.setState({
       errMsg: json["errmsg"],
       status: json["status"],
+      predictMsg: json["predictmsg"]
     })
   }
 
@@ -60,7 +63,8 @@ class RenderContent extends Component<Props, MyState> {
           dangerouslySetInnerHTML={{
             __html: this.state.template({ 
               status: this.state.status,
-              errmsg: this.state.errMsg
+              errmsg: this.state.errMsg,
+              predictmsg: this.state.predictMsg
             }),
           }}
         />

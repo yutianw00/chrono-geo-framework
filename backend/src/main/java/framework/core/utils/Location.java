@@ -1,15 +1,15 @@
 package framework.core.utils;
 
 public class Location {
-    private long longtitude;
-    private long latitude;
+    private double longtitude;
+    private double latitude;
 
-    public Location(long longtitude, long latitude) {
+    public Location(double longtitude, double latitude) {
         this.longtitude = longtitude;
         this.latitude = latitude;
     }
 
-    public long getLongtitude() {
+    public double getLongtitude() {
         return longtitude;
     }
 
@@ -17,7 +17,7 @@ public class Location {
         this.longtitude = longtitude;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 

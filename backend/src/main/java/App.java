@@ -20,7 +20,6 @@ public class App extends NanoHTTPD {
     }
 
     private Framework app;
-//    private Template template;
     private List<DataPlugin> dataPlugins;
     private List<VisualPlugin> visualPlugins;
 
@@ -99,17 +98,6 @@ public class App extends NanoHTTPD {
         }
         return result;
     }
-
-    /*
-    private static List<VisualPlugin> loadVisualPlugins() {
-        // TODO
-        List<VisualPlugin> plugins = new ArrayList<>();
-        // TODO: change the mock data
-        plugins.add(new DummyVisualPlugin());
-        plugins.add(new DummyVisualPlugin());
-        return plugins;
-    }
-    */
 
 }
 

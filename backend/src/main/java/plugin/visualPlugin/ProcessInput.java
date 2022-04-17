@@ -20,25 +20,25 @@ public class ProcessInput {
     public Table processInput(List<MyData> data) {
         Table table = Table.create();
 
-        long[] latitudeArray = new long[data.size()];
-        long[] longtitudeArray = new long[data.size()];
+        double[] latitudeArray = new double[data.size()];
+        double[] longtitudeArray = new double[data.size()];
         long[] timeArray = new long[data.size()];
         double[] dataArray = new double[data.size()];
 
         int i = 0;
         for (MyData myData : data) {
-            long latitude = myData.getLocation().getLatitude();
+            double latitude = myData.getLocation().getLatitude();
             latitudeArray[i] = latitude;
             longtitudeArray[i] = myData.getLocation().getLongtitude();
             timeArray[i] = myData.getTime();
             dataArray[i++] = myData.getData();
         }
 
-        LongStream latitudeStream = Arrays.stream(latitudeArray);
-        LongColumn latitudeColumn = LongColumn.create("latitude", latitudeStream);
+        DoubleStream latitudeStream = Arrays.stream(latitudeArray);
+        DoubleColumn latitudeColumn = DoubleColumn.create("latitude", latitudeStream);
 
-        LongStream longtitudeStream = Arrays.stream(longtitudeArray);
-        LongColumn longtitudeColumn = LongColumn.create("longtitude", longtitudeStream);
+        DoubleStream longtitudeStream = Arrays.stream(longtitudeArray);
+        DoubleColumn longtitudeColumn = DoubleColumn.create("longtitude", longtitudeStream);
 
         LongStream timeStream = Arrays.stream(timeArray);
         LongColumn timeColumn = LongColumn.create("time", timeStream);

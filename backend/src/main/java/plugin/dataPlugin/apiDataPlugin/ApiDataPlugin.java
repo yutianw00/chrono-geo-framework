@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ApiDataPlugin implements DataPlugin {
+    private static int PREDICTNUM = -1;
+
     @Override
     public String getName() {
         return null;
@@ -86,5 +88,10 @@ public class ApiDataPlugin implements DataPlugin {
     @Override
     public MyData group(MyData d1, MyData d2) {
         return null;
+    }
+
+    @Override
+    public int predictFuture() {
+        return PREDICTNUM;
     }
 }

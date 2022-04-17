@@ -59,5 +59,16 @@ public interface DataPlugin {
      */
     public MyData group(MyData d1, MyData d2);
 
+    /**
+     * tell the framework whether should predict future data or not,
+     * using a Machine Learning ARIMA algorithm API; return an int:
+     * if -1 means do not predict, otherwise tells how
+     * many future data should be predicted
+     *
+     * @return if positive, means how many future data should
+     *         be predicted; if -1, means should not predict
+     */
+    public int predictFuture();
+
 }
 

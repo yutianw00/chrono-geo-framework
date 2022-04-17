@@ -16,11 +16,14 @@ public class State {
     String errMsg;
     String status;
 
+    String predictionMessage = "";
+
     public State() {
     }
 
-    public State(List<DataCell> dataCells, List<VisualCell> visualCells, String renderHMTL,
-                 String graphTitle, String graphDescription, String errMsg, boolean finishRendered) {
+    public State(List<DataCell> dataCells, List<VisualCell> visualCells,
+                 String renderHMTL, String graphTitle, String graphDescription,
+                 String errMsg, boolean finishRendered, int predictNum) {
         this.dataCells = dataCells;
         this.visualCells = visualCells;
         this.renderHMTL = renderHMTL;
@@ -34,6 +37,13 @@ public class State {
             this.status = "Rendering succeed! Please check the other opened webpage";
         } else {
             this.status = "";
+        }
+
+        if (predictNum > 0) {
+            predictionMessage = "Framework will also make prediction of future "
+                    + predictNum + " data points!";
+        } else if (predictNum == -1){
+            predictionMessage = "Please note that this data plugin does allow any prediction. ";
         }
     }
 
@@ -93,6 +103,7 @@ public class State {
                 " \"graphdescription\": \" " + graphDescription + "\"," +
                 " \"errmsg\": \" " + errMsg + "\"," +
                 " \"status\": \" " + status + "\"," +
+                " \"predictmsg\": \" " + predictionMessage + "\"," +
                 " \"renderhtml\": \"" +   renderHMTL + "\"}" ).replace("null", "");
     }
 }

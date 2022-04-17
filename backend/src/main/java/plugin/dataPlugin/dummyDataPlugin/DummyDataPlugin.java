@@ -10,6 +10,8 @@ import java.util.List;
 
 public class DummyDataPlugin implements DataPlugin {
 
+    private static int PREDICTNUM = -1;
+
     @Override
     public String getName() {
         return "dummy Data";
@@ -50,5 +52,10 @@ public class DummyDataPlugin implements DataPlugin {
     @Override
     public MyData group(MyData d1, MyData d2) {
         return new MyData( d1.getLocation(), d1.getTime(),d1.getData() + d2.getData());
+    }
+
+    @Override
+    public int predictFuture() {
+        return PREDICTNUM;
     }
 }

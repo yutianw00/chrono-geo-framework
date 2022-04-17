@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVDataPlugin implements DataPlugin {
+    private static int PREDICTNUM = 5;
+
     @Override
     public String getName() {
         return "CSVDataPlugin";
@@ -58,5 +60,10 @@ public class CSVDataPlugin implements DataPlugin {
     @Override
     public MyData group(MyData d1, MyData d2) {
         return null;
+    }
+
+    @Override
+    public int predictFuture() {
+        return PREDICTNUM;
     }
 }

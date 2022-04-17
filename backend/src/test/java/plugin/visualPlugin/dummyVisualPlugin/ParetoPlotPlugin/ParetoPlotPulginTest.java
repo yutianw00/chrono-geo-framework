@@ -15,8 +15,8 @@ public class ParetoPlotPulginTest extends TestCase {
     List<MyData> data = new LinkedList<>();
     ParetoPlotPulgin barPlotPlugin = new ParetoPlotPulgin();
     MyData data1 = new MyData(new Location(1, 1), 2, 3.0);
-    MyData data2 = new MyData(new Location(1, 1), 4, 6.0);
-    MyData data3 = new MyData(new Location(1, 1), 6, 9.0);
+    MyData data2 = new MyData(new Location(1, 3), 4, 6.0);
+    MyData data3 = new MyData(new Location(2, 1), 6, 9.0);
 
 
     @Before
