@@ -1,4 +1,4 @@
-package plugin.visualPlugin.dummyVisualPlugin;
+package plugin.visualPlugin.dummyVisualPlugin.BarPlotPlugin;
 
 
 import static tech.tablesaw.aggregate.AggregateFunctions.sum;

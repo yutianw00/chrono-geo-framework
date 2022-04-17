@@ -1,4 +1,4 @@
 # List of VISUAL plugins to be registered by framework.
 # Provide fully qualified class names here ( plugin.visualPlugin.XXX ),
 # with one plugin per line.
-plugin.visualPlugin.dummyVisualPlugin.DummyVisualPlugin
+plugin.visualPlugin.dummyVisualPlugin.DummyPlugin.DummyVisualPlugin

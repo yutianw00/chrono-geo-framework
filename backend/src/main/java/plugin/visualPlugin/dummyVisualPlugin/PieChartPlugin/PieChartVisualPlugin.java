@@ -1,4 +1,4 @@
-package plugin.visualPlugin.dummyVisualPlugin;
+package plugin.visualPlugin.dummyVisualPlugin.PieChartPlugin;
 
 import framework.core.VisualPlugin;
 import framework.core.utils.MyData;
