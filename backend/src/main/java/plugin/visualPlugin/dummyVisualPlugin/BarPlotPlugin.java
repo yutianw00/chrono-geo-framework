@@ -77,7 +77,7 @@ public class BarPlotPlugin implements VisualPlugin {
     }
 
     @Override
-    public void render(List<MyData> data) {
+    public boolean render(List<MyData> data) {
         Table table = Table.create();
 
         long[] array = new long[data.size()];
@@ -105,6 +105,8 @@ public class BarPlotPlugin implements VisualPlugin {
                         fatalities1, // table
                         "latitude", // grouping column name
                         "sum [latitude]")); // numeric column name
+
+        return true;
     }
 
     @Override

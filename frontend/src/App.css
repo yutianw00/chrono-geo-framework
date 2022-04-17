@@ -51,6 +51,11 @@ body {
   color: red;
 }
 
+.err {
+  font-weight: bold;
+  color: red;
+}
+
 #footer {
   background-color: #e9f7ff;
   padding: 0px;

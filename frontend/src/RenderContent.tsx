@@ -1,10 +1,13 @@
 import { Component } from 'react'
+import Handlebars from "handlebars"
 import './App.css'
 
 var oldHref = "http://localhost:3000"
 
 interface MyState {
-  content: string
+  status: string,
+  errMsg: string,
+  template: HandlebarsTemplateDelegate<any>;
 }
 
 interface Props {
@@ -15,7 +18,9 @@ class RenderContent extends Component<Props, MyState> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      content: "whatever"
+      template: this.loadTemplate(),
+      status: "",
+      errMsg: ""
     };
   }
 
@@ -23,9 +28,16 @@ class RenderContent extends Component<Props, MyState> {
     const href = url + "";
     const response = await fetch(href);
     const json = await response.json();
+
     this.setState({
-      content: json["renderhtml"]
+      errMsg: json["errmsg"],
+      status: json["status"],
     })
+  }
+
+  loadTemplate (): HandlebarsTemplateDelegate<any> {
+    const src = document.getElementById("render-template");
+    return Handlebars.compile(src?.innerHTML, {});
   }
   
   async switch() {
@@ -46,7 +58,10 @@ class RenderContent extends Component<Props, MyState> {
       <div className="RenderContent">
         <div
           dangerouslySetInnerHTML={{
-            __html: this.state.content,
+            __html: this.state.template({ 
+              status: this.state.status,
+              errmsg: this.state.errMsg
+            }),
           }}
         />
       </div>

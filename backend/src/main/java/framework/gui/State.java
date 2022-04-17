@@ -13,17 +13,26 @@ public class State {
     String graphTitle;
     String graphDescription;
 
+    String errMsg;
+    String status;
 
     public State() {
     }
 
     public State(List<DataCell> dataCells, List<VisualCell> visualCells, String renderHMTL,
-                 String graphTitle, String graphDescription) {
+                 String graphTitle, String graphDescription, String errMsg) {
         this.dataCells = dataCells;
         this.visualCells = visualCells;
         this.renderHMTL = renderHMTL;
         this.graphTitle = graphTitle;
         this.graphDescription = graphDescription;
+        this.errMsg = errMsg;
+
+        if (!this.errMsg.equals("")) {
+            this.status = "Rendering Failed!";
+        } else {
+            this.status = "Rendering succeed! Please check the other opened webpage";
+        }
     }
 
     public void setDataCells(List<DataCell> dataCells) {
@@ -52,6 +61,8 @@ public class State {
                 " \"visualcells\": " + visualCells.toString() + "," +
                 " \"graphtitle\": \"" + graphTitle + "\"," +
                 " \"graphdescription\": \" " + graphDescription + "\"," +
+                " \"errmsg\": \" " + errMsg + "\"," +
+                " \"status\": \" " + status + "\"," +
                 " \"renderhtml\": \"" +   renderHMTL + "\"}" ).replace("null", "");
     }
 }

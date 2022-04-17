@@ -8,10 +8,6 @@ import framework.core.Framework;
 import framework.core.FrameworkImpl;
 import framework.core.VisualPlugin;
 import framework.gui.State;
-import plugin.dataPlugin.dummyDataPlugin.DummyDataPlugin;
-import plugin.visualPlugin.dummyVisualPlugin.DummyVisualPlugin;
-
-import javax.xml.crypto.Data;
 
 public class App extends NanoHTTPD {
 
@@ -57,6 +53,7 @@ public class App extends NanoHTTPD {
             System.out.println("Request received: choose visual plugin");
             app.chooseVisualPlugin((Integer.parseInt(params.get("id"))));
         } else if (uri.equals("/render")){
+            System.out.println("Request received: Render");
             app.render(params.get("str"));
         } else if (uri.equals("/reset")){
             app.restart();
@@ -65,7 +62,7 @@ public class App extends NanoHTTPD {
         }
         // Extract the view-specific data from the game and apply it to the template.
         State state = app.getState();
-        System.out.println(state.toString());
+//        System.out.println(state.toString());
         return newFixedLengthResponse(state.toString());
 
     }

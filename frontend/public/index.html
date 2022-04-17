@@ -33,7 +33,6 @@
     <input type="text" id="str" name="str" value=""><br><br>
     <input type="submit" value="Render">
   </form>
-  <p class="err">Error message here</p>
 
   <div id="render-graph"></div>
   <br><br>
@@ -90,6 +89,11 @@
     {{/if}}
     {{/each}}
   </div>
+</div>
+
+<div id="render-template" class="react">
+  <h2>{{status}}</h2>
+  <div class="err">{{errmsg}}</div>
 </div>
 
 

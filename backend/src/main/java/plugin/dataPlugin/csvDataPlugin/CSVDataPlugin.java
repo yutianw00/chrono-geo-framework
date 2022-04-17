@@ -38,10 +38,9 @@ public class CSVDataPlugin implements DataPlugin {
                 double data = Double.valueOf(values[1]);
                 records.add(new MyData(new Location((long)longtitude, (long)latitude), year, data));
             }
-        } catch (FileNotFoundException fileNotFoundException) {
-            fileNotFoundException.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Read file error! Reporting to frontend...");
+            return null;
         }
         return records;
     }

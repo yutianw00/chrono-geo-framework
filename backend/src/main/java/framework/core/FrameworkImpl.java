@@ -24,6 +24,8 @@ public class FrameworkImpl implements Framework{
     private String graphTitle = "";
     private String graphDescription = "";
 
+    private String errMsg = "";
+
     public FrameworkImpl() {
         dataPlugins = new ArrayList<>();
         visualPlugins = new ArrayList<>();
@@ -63,7 +65,8 @@ public class FrameworkImpl implements Framework{
             visualCells.add(vc);
         }
 
-        return new State(dataCells, visualCells, this.renderHMTL, this.graphTitle, this.graphDescription);
+        return new State(dataCells, visualCells, this.renderHMTL, this.graphTitle,
+                this.graphDescription, this.errMsg);
     }
 
     @Override
@@ -120,24 +123,40 @@ public class FrameworkImpl implements Framework{
         if (data == null) {
             data = dataPlugin.importDataFromFile(str);
         }
+        if (data == null) {
+            errMsg = "Cannot render: cannot read from the file path or the API url. " +
+                    "Please double check your input.";
+        }
     }
 
     @Override
     public void render(String str) {
         if (chosenDataPluginId == -1 || chosenVisualPluginId == -1) {
             System.out.println("plugin not chosen yet");
+            errMsg = "Cannot render: please choose a data plugin AND a visual plugin";
             return;
         }
-
+        
         System.out.println("Rendering data from source " + str + "......");
         importData(str);
+
+        if (data == null) { // error happened at data plugin
+            return;
+        }
 
         sortData();
         groupData();
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
-        visualPlugin.render(groupedData);
+        boolean res = visualPlugin.render(groupedData);
+        if (!res) {
+            errMsg = "Render err: rendering failed";
+        } else {
+            errMsg = "";
+            System.out.println("Rendering succeed!");
+        }
         graphTitle = visualPlugin.graphTitle();
         graphDescription = visualPlugin.graphDescription();
+
     }
 }

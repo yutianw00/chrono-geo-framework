@@ -22,12 +22,13 @@ public interface VisualPlugin {
 
     /**
      * create a new html file (for example, index.html) in the folder,
-     * and automatically open that rendered webpage, return the result of
-     * rendering
+     * and automatically open that rendered webpage,
+     * return the result of the rendering process
      *
      * @param data the data take in for visualization to render
+     * @return true if the render succeed, false otherwise
      */
-    void render(List<MyData> data);
+    boolean render(List<MyData> data);
 
     /**
      * get the title of the rendered visual plot
