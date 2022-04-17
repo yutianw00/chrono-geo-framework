@@ -11,6 +11,12 @@ import java.util.stream.DoubleStream;
 import java.util.stream.LongStream;
 
 public class ProcessInput {
+
+    /**
+     * To build a table that plugin can use
+     * @param data MyData list as input
+     * @return a table that can be processed by the plugin
+     */
     public Table processInput(List<MyData> data) {
         Table table = Table.create();
 
