@@ -5,6 +5,7 @@ import framework.core.utils.MyData;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import plugin.visualPlugin.BarPlotPlugin.BarPlotPlugin;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class BarPlotPluginTest extends TestCase {
 
     @Test
     public void testRender() {
+        /* will inspect render result manually */
         assertTrue(barPlotPlugin.render(data));
     }
 }
