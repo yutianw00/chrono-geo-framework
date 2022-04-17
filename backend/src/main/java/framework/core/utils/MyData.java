@@ -34,4 +34,13 @@ public class MyData {
     public void setData(double data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "MyData{" +
+                "location=" + location +
+                ", time=" + time +
+                ", data=" + data +
+                '}';
+    }
 }

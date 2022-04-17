@@ -43,4 +43,12 @@ public class Location {
         return (((Location) obj).getLatitude() == this.getLatitude() &&
                 ((Location) obj).getLongtitude() == this.getLongtitude());
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "longtitude=" + longtitude +
+                ", latitude=" + latitude +
+                '}';
+    }
 }

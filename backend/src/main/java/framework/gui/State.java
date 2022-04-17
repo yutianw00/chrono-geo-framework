@@ -57,6 +57,34 @@ public class State {
         this.graphDescription = graphDescription;
     }
 
+    public List<DataCell> getDataCells() {
+        return dataCells;
+    }
+
+    public List<VisualCell> getVisualCells() {
+        return visualCells;
+    }
+
+    public String getRenderHMTL() {
+        return renderHMTL;
+    }
+
+    public String getGraphTitle() {
+        return graphTitle;
+    }
+
+    public String getGraphDescription() {
+        return graphDescription;
+    }
+
+    public String getErrMsg() {
+        return errMsg;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return ("{ \"datacells\": " + dataCells.toString() + "," +
