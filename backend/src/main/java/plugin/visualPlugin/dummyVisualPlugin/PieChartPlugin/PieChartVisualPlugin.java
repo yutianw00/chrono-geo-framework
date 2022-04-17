@@ -4,8 +4,15 @@ import framework.core.VisualPlugin;
 import framework.core.utils.MyData;
 import org.icepear.echarts.Bar;
 import org.icepear.echarts.render.Engine;
+import plugin.visualPlugin.dummyVisualPlugin.ProcessInput;
+import tech.tablesaw.api.Table;
+import tech.tablesaw.plotly.Plot;
+import tech.tablesaw.plotly.api.HorizontalBarPlot;
+import tech.tablesaw.plotly.api.PiePlot;
 
 import java.util.List;
+
+import static tech.tablesaw.aggregate.AggregateFunctions.sum;
 
 public class PieChartVisualPlugin implements VisualPlugin {
     @Override
@@ -20,7 +27,18 @@ public class PieChartVisualPlugin implements VisualPlugin {
 
     @Override
     public boolean render(List<MyData> data) {
-        return false;
+        Table table = new ProcessInput().processInput(data);
+        Table fatalities1 = table.summarize("data", sum).by("timeColumn");
+        // Plot
+        Plot.show(
+                PiePlot.create(
+                        "data by time", // plot title
+                        fatalities1, // table
+                        "time", // grouping column name
+                        "sum [data]")); // numeric column name
+
+        return true;
+
     }
 
     @Override
