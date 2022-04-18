@@ -85,7 +85,7 @@
                     <arguments>
                         <argument>-classpath</argument>
                         <classpath/>
-                        <argument>edu.cmu.cs.cs214.rec10.App</argument>
+                        <argument>App</argument>
                     </arguments>
                 </configuration>
             </plugin>
