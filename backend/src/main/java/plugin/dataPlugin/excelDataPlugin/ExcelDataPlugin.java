@@ -18,7 +18,7 @@ public class ExcelDataPlugin implements DataPlugin {
 
     @Override
     public String getName() {
-        return "Excel Data Plugin";
+        return "Excel";
     }
 
     @Override

@@ -19,7 +19,11 @@ public class ApiDataPlugin implements DataPlugin {
 
     @Override
     public String getName() {
+<<<<<<< HEAD
         return "Api Data Plugin";
+=======
+        return "API";
+>>>>>>> 860e03cba2260627ff6ddff21b51fac9ae1b2137
     }
 
     @Override
