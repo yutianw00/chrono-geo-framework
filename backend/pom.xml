@@ -23,7 +23,6 @@
             <artifactId>timeseries-forecast</artifactId>
             <version>1.1.1</version>
         </dependency>
-        <!-- Thanks for using https://jar-download.com -->
 
         <dependency>
             <groupId>org.apache.poi</groupId>
