@@ -26,7 +26,4 @@ public class CSVDataPluginTest {
         assertTrue(records.size() > 0);
     }
 
-    @Test
-    public void predictFuture() {
-    }
 }

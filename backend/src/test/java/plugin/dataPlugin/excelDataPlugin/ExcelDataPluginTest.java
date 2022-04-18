@@ -24,10 +24,4 @@ public class ExcelDataPluginTest {
         List<MyData> records = plugin.importDataFromFile(path);
         assertTrue(records.size() > 0);
     }
-
-
-
-    @Test
-    public void predictFuture() {
-    }
 }
