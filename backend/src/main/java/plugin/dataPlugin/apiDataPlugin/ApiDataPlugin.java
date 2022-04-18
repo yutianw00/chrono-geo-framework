@@ -63,10 +63,10 @@ public class ApiDataPlugin implements DataPlugin {
         JSONObject jsonObject = JSONObject.parseObject(jsonString);
         int id = 0;
         String jsonID = id + "";
+        long time = 0;
         while (jsonObject.containsKey(jsonID)) {
             JSONObject patient = (JSONObject) jsonObject.get(jsonID);
             Object obj = patient.get("route");
-            String time = "";
             if (obj instanceof JSONArray) {
                 JSONArray routes = (JSONArray) obj;
                 JSONObject firstRoute = (JSONObject) routes.get(0);
@@ -77,7 +77,7 @@ public class ApiDataPlugin implements DataPlugin {
                     jsonID = id + "";
                     continue;
                 }
-                time = arr[0] + arr[1] + arr[2].split("T")[0];
+                time = Long.parseLong(arr[1]) * 31 + Long.parseLong(arr[2].split("T")[0]);
             } else if (obj instanceof JSONObject) {
                 JSONObject route = (JSONObject) obj;
                 String str = route.getString("start_time");
@@ -87,14 +87,14 @@ public class ApiDataPlugin implements DataPlugin {
                     jsonID = id + "";
                     continue;
                 }
-                time = arr[0] + arr[1] + arr[2].split("T")[0];
+                time = Long.parseLong(arr[1]) * 31 + Long.parseLong(arr[2].split("T")[0]);
             }
             JSONObject patientInfo = (JSONObject) patient.get("patient_info");
             JSONObject residentalInfo = (JSONObject) patientInfo.get("residental_info");
             double longitude = Double.parseDouble(residentalInfo.getString("lng"));
             double latitude = Double.parseDouble(residentalInfo.getString("lat"));
             double data = Double.parseDouble(patientInfo.getString("age"));
-            records.add(new MyData(new Location((long) longitude, (long) latitude), Long.parseLong(time), data));
+            records.add(new MyData(new Location((long) longitude, (long) latitude), time, data));
             id++;
             jsonID = id + "";
         }
