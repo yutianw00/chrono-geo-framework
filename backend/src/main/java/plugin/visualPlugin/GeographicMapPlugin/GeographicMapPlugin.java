@@ -67,19 +67,6 @@ public class GeographicMapPlugin implements VisualPlugin {
         Trace trace2 =
                 ScatterTrace.builder(x2, y2).marker(Marker.builder().size(1).build()).name("Predict lat/lon").build();
         Plot.show(new Figure(layout, trace, trace2));
-
-//        Table fatalities1 = table.summarize("data", mean).by("time");
-
-//        String title = dataDescription + " with respect to time";
-//
-//        // Plot
-//        Plot.show(
-//                PiePlot.create( // PIE CHART
-//                        title, // plot title
-//                        fatalities1, // table
-//                        "time", // grouping column name
-//                        "mean [data]")); // numeric column name
-
         return true;
     }
 

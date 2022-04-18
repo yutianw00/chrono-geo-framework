@@ -88,8 +88,6 @@ public class ProcessInput {
             dataArray1[j++] = data.get(i).getData();
         }
 
-
-
         DoubleStream latitudeStream = Arrays.stream(latitudeArray);
         DoubleColumn latitudeColumn = DoubleColumn.create("latitude", latitudeStream);
 
