@@ -38,6 +38,6 @@ public class testGeographicMapPlugin extends TestCase {
     @Test
     public void testRender() {
         /* will inspect render result manually */
-        assertTrue(barPlotPlugin.render(data, "", 0));
+        assertTrue(barPlotPlugin.render(data, "", 1000));
     }
 }

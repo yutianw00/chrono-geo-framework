@@ -65,7 +65,7 @@ public class GeographicMapPlugin implements VisualPlugin {
         String title2 = dataDescription + " with respect to time";
 
         Trace trace2 =
-                ScatterTrace.builder(x, y).marker(Marker.builder().size(1).build()).name("lat/lon").build();
+                ScatterTrace.builder(x2, y2).marker(Marker.builder().size(1).build()).name("Predict lat/lon").build();
         Plot.show(new Figure(layout, trace, trace2));
 
 //        Table fatalities1 = table.summarize("data", mean).by("time");
