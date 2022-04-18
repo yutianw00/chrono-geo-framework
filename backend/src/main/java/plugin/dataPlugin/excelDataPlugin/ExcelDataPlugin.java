@@ -46,7 +46,7 @@ public class ExcelDataPlugin implements DataPlugin {
                         String[] date = row.getCell(2).toString().split("-");
                         long year = Long.valueOf(date[0]);
                         double data = Double.valueOf(row.getCell(1).toString());
-                        records.add(new MyData(new Location((long)longitude, (long)latitude), year, data));
+                        records.add(new MyData(new Location(longitude, latitude), year, data));
                     }
                 }
             }
@@ -63,15 +63,15 @@ public class ExcelDataPlugin implements DataPlugin {
         return null;
     }
 
-    @Override
-    public boolean dataEqual(MyData d1, MyData d2) {
-        return false;
-    }
-
-    @Override
-    public MyData group(MyData d1, MyData d2) {
-        return null;
-    }
+//    @Override
+//    public boolean dataEqual(MyData d1, MyData d2) {
+//        return false;
+//    }
+//
+//    @Override
+//    public MyData group(MyData d1, MyData d2) {
+//        return null;
+//    }
 
     @Override
     public int predictFuture() {

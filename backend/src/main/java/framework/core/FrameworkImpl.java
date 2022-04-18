@@ -77,31 +77,32 @@ public class FrameworkImpl implements Framework{
 
     @Override
     public void groupData() {
-        Map<String, List<MyData>> dataMap = new HashMap<>();
-        for (MyData dt : data) {
-            Location loc = dt.getLocation();
-            double longitude = loc.getLongtitude();
-            double latitude = loc.getLatitude();
-            long time = dt.getTime();
-            String hash = longitude + "," + latitude + "," + time;
-            List<MyData> lst = dataMap.getOrDefault(hash, new ArrayList<>());
-            lst.add(dt);
-            dataMap.put(hash, lst);
-        }
-
-        List<MyData> groupedData = new ArrayList<>();
-        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
-
-        for (Map.Entry<String, List<MyData>> entry : dataMap.entrySet()) {
-            List<MyData> myDataList = (List<MyData>) entry.getValue();
-            MyData acc = myDataList.get(0);
-            for (int i = 1; i < myDataList.size(); i++) {
-                acc = dataPlugin.group(acc, myDataList.get(i));
-            }
-            groupedData.add(acc);
-        }
-
-        data = groupedData;
+        return;
+//        Map<String, List<MyData>> dataMap = new HashMap<>();
+//        for (MyData dt : data) {
+//            Location loc = dt.getLocation();
+//            double longitude = loc.getLongtitude();
+//            double latitude = loc.getLatitude();
+//            long time = dt.getTime();
+//            String hash = longitude + "," + latitude + "," + time;
+//            List<MyData> lst = dataMap.getOrDefault(hash, new ArrayList<>());
+//            lst.add(dt);
+//            dataMap.put(hash, lst);
+//        }
+//
+//        List<MyData> groupedData = new ArrayList<>();
+//        DataPlugin dataPlugin = dataPlugins.get(chosenDataPluginId);
+//
+//        for (Map.Entry<String, List<MyData>> entry : dataMap.entrySet()) {
+//            List<MyData> myDataList = (List<MyData>) entry.getValue();
+//            MyData acc = myDataList.get(0);
+//            for (int i = 1; i < myDataList.size(); i++) {
+//                acc = dataPlugin.group(acc, myDataList.get(i));
+//            }
+//            groupedData.add(acc);
+//        }
+//
+//        data = groupedData;
     }
 
     @Override
@@ -160,7 +161,8 @@ public class FrameworkImpl implements Framework{
             return;
         }
 
-        groupData();
+//        groupData();
+
         sortData();
 
         DataPlugin chosenDataplugin = dataPlugins.get(chosenDataPluginId);

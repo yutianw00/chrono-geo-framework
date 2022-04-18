@@ -44,15 +44,15 @@ public class DummyDataPlugin implements DataPlugin {
         return null;
     }
 
-    @Override
-    public boolean dataEqual(MyData d1, MyData d2) {
-        return d1.getLocation().equals(d2.getLocation()) && d1.getTime() == d2.getTime();
-    }
-
-    @Override
-    public MyData group(MyData d1, MyData d2) {
-        return new MyData( d1.getLocation(), d1.getTime(),d1.getData() + d2.getData());
-    }
+//    @Override
+//    public boolean dataEqual(MyData d1, MyData d2) {
+//        return d1.getLocation().equals(d2.getLocation()) && d1.getTime() == d2.getTime();
+//    }
+//
+//    @Override
+//    public MyData group(MyData d1, MyData d2) {
+//        return new MyData( d1.getLocation(), d1.getTime(),d1.getData() + d2.getData());
+//    }
 
     @Override
     public int predictFuture() {

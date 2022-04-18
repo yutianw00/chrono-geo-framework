@@ -38,7 +38,7 @@ public class CSVDataPlugin implements DataPlugin {
                 String[] date = values[2].split("-");
                 long year = Long.valueOf(date[0]);
                 double data = Double.valueOf(values[1]);
-                records.add(new MyData(new Location((long)longtitude, (long)latitude), year, data));
+                records.add(new MyData(new Location(longtitude, latitude), year, data));
             }
         } catch (Exception e) {
             System.out.println("Read file error! Reporting to frontend...");
@@ -52,15 +52,15 @@ public class CSVDataPlugin implements DataPlugin {
         return null;
     }
 
-    @Override
-    public boolean dataEqual(MyData d1, MyData d2) {
-        return false;
-    }
-
-    @Override
-    public MyData group(MyData d1, MyData d2) {
-        return null;
-    }
+//    @Override
+//    public boolean dataEqual(MyData d1, MyData d2) {
+//        return false;
+//    }
+//
+//    @Override
+//    public MyData group(MyData d1, MyData d2) {
+//        return null;
+//    }
 
     @Override
     public int predictFuture() {

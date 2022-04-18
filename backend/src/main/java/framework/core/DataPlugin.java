@@ -39,27 +39,27 @@ public interface DataPlugin {
      */
     public List<MyData> importDataFromAPI(String link);
 
-    /**
-     * Decide if two data are considered equal (meaning,
-     *  having the same/similar time, and same/similar geo location
-     *  so that their data could be merged)
-     *
-     * @param d1 The first data
-     * @param d2 The second data
-     * @return {@code true} if they are considered similar and data could
-     *  be merged, {@code false} otherwise
-     */
-    public boolean dataEqual(MyData d1, MyData d2);
+//    /**
+//     * Decide if two data are considered equal (meaning,
+//     *  having the same/similar time, and same/similar geo location
+//     *  so that their data could be merged)
+//     *
+//     * @param d1 The first data
+//     * @param d2 The second data
+//     * @return {@code true} if they are considered similar and data could
+//     *  be merged, {@code false} otherwise
+//     */
+//    public boolean dataEqual(MyData d1, MyData d2);
 
-    /**
-     * Merge two equal/similar data (for example, adding the data together)
-     * Prerequisite: {@code dataEqual(d1, d2)} returns true
-     *
-     * @param d1 The first data
-     * @param d2 The second data
-     * @return the resulting data of the merge
-     */
-    public MyData group(MyData d1, MyData d2);
+//    /**
+//     * Merge two equal/similar data (for example, adding the data together)
+//     * Prerequisite: {@code dataEqual(d1, d2)} returns true
+//     *
+//     * @param d1 The first data
+//     * @param d2 The second data
+//     * @return the resulting data of the merge
+//     */
+//    public MyData group(MyData d1, MyData d2);
 
     /**
      * tell the framework whether should predict future data or not,
