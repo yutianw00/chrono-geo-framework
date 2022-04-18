@@ -2,6 +2,10 @@ package plugin.visualPlugin.BarPlotPlugin;
 
 
 import static tech.tablesaw.aggregate.AggregateFunctions.mean;
+<<<<<<< HEAD
+=======
+import static tech.tablesaw.aggregate.AggregateFunctions.sum;
+>>>>>>> a8fcb55fbc00d82d26401a8b8bdc97691495643f
 
 import framework.core.VisualPlugin;
 import framework.core.utils.MyData;
@@ -40,7 +44,7 @@ public class BarPlotPlugin implements VisualPlugin {
                         "data by time", // plot title
                         fatalities1, // table
                         "time", // grouping column name
-                        "sum [data]")); // numeric column name
+                        "mean [data]")); // numeric column name
 
         return true;
     }

@@ -11,6 +11,7 @@ import tech.tablesaw.plotly.traces.BarTrace;
 
 import java.util.List;
 
+import static tech.tablesaw.aggregate.AggregateFunctions.mean;
 import static tech.tablesaw.aggregate.AggregateFunctions.sum;
 
 public class ParetoPlotPulgin implements VisualPlugin {

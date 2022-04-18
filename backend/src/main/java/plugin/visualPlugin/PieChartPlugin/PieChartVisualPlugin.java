@@ -38,7 +38,7 @@ public class PieChartVisualPlugin implements VisualPlugin {
                         "data by time", // plot title
                         fatalities1, // table
                         "time", // grouping column name
-                        "sum [data]")); // numeric column name
+                        "mean [data]")); // numeric column name
 
         return true;
 
