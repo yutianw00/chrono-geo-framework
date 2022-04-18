@@ -27,8 +27,4 @@ public class ApiDataPluginTest {
         List<MyData> records = plugin.importDataFromAPI(url);
         assertTrue(records.size() > 0);
     }
-
-    @Test
-    public void predictFutureTest() {
-    }
 }
