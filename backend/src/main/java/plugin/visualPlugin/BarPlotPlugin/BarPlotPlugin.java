@@ -33,7 +33,7 @@ public class BarPlotPlugin implements VisualPlugin {
         // BAR PLOTS
 
         // Sum the number of fatalities from each tornado, grouping by scale
-        Table fatalities1 = table.summarize("data", sum).by("time");
+        Table fatalities1 = table.summarize("data", mean).by("time");
         // Plot
         Plot.show(
                 HorizontalBarPlot.create(
