@@ -24,7 +24,7 @@ public class ApiDataPlugin implements DataPlugin {
 
     @Override
     public String getIntro() {
-        return null;
+        return "Download DataSet from URL";
     }
 
     @Override
@@ -35,7 +35,6 @@ public class ApiDataPlugin implements DataPlugin {
     @Override
     public List<MyData> importDataFromAPI(String link) {
         List<MyData> records = new ArrayList<>();
-
         StringBuffer jsonBuffer = new StringBuffer();
         try {
             URL url = new URL(link);
@@ -54,8 +53,11 @@ public class ApiDataPlugin implements DataPlugin {
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+            return null;
+        }
+        catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         String jsonString = jsonBuffer.toString();
         JSONObject jsonObject = JSONObject.parseObject(jsonString);

@@ -16,12 +16,12 @@ public class CSVDataPlugin implements DataPlugin {
 
     @Override
     public String getName() {
-        return "CSVDataPlugin";
+        return "CSV Data Plugin";
     }
 
     @Override
     public String getIntro() {
-        return null;
+        return "Handle Datasets in CSV Files, Group Data By Integer Part of Locations";
     }
 
     @Override
