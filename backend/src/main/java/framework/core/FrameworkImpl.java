@@ -161,18 +161,17 @@ public class FrameworkImpl implements Framework{
             return;
         }
 
-//        groupData();
-
         sortData();
 
         DataPlugin chosenDataplugin = dataPlugins.get(chosenDataPluginId);
+        String dataDescription = chosenDataplugin.dataDescription();
         predictNum = chosenDataplugin.predictFuture();
 
         Predictor.predict(data, predictNum);
 
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
-        boolean res = visualPlugin.render(data);
+        boolean res = visualPlugin.render(data, dataDescription);
         if (!res) {
             errMsg = "Render err: rendering failed";
         } else {

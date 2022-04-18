@@ -26,17 +26,16 @@ public class ParetoPlotPulgin implements VisualPlugin {
     }
 
     @Override
-    public boolean render(List<MyData> data) {
+    public boolean render(List<MyData> data, String dataDescription) {
+
+        // creating a table for rendering using the data
         Table table = new ProcessInput().processInput(data);
-        // ***************** Plotting **********************
-
-        // BAR PLOTS
-
-        // Sum the number of fatalities from each tornado, grouping by scale
         Table fatalities1 = table.summarize("data", mean).by("time");
 
+        String title = dataDescription + " with respect to time";
+
         fatalities1 = fatalities1.sortDescendingOn(fatalities1.column(1).name());
-        Layout layout = Layout.builder().title("data by time").build();
+        Layout layout = Layout.builder().title(title).build();
         BarTrace trace = BarTrace.builder(fatalities1.categoricalColumn(0), fatalities1.numberColumn(1)).build();
         Plot.show(new Figure(layout, trace));
         // Plot

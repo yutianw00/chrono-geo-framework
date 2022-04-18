@@ -72,4 +72,9 @@ public class ExcelDataPlugin implements DataPlugin {
     public int predictFuture() {
         return PREDICTNUM;
     }
+
+    @Override
+    public String dataDescription() {
+        return "Altutide of bird migration";
+    }
 }

@@ -105,4 +105,9 @@ public class ApiDataPlugin implements DataPlugin {
     public int predictFuture() {
         return PREDICTNUM;
     }
+
+    @Override
+    public String dataDescription() {
+        return "Age of the COVID carrier";
+    }
 }

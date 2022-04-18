@@ -26,19 +26,18 @@ public class BarPlotPlugin implements VisualPlugin {
     }
 
     @Override
-    public boolean render(List<MyData> data) {
+    public boolean render(List<MyData> data, String dataDescription) {
 
+        // creating a table for rendering using the data
         Table table = new ProcessInput().processInput(data);
-        // ***************** Plotting **********************
-
-        // BAR PLOTS
-
-        // Sum the number of fatalities from each tornado, grouping by scale
         Table fatalities1 = table.summarize("data", mean).by("time");
+
+        String title = dataDescription + " with respect to time";
+
         // Plot
         Plot.show(
-                HorizontalBarPlot.create(
-                        "data by time", // plot title
+                HorizontalBarPlot.create( // BAR PLOTS
+                        title, // plot title
                         fatalities1, // table
                         "time", // grouping column name
                         "mean [data]")); // numeric column name

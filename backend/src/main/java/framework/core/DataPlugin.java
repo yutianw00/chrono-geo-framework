@@ -39,6 +39,14 @@ public interface DataPlugin {
      */
     public List<MyData> importDataFromAPI(String link);
 
+    /**
+     * Tell the framework what kind of data it is, so that
+     * when the visual plugin is rendering the data, it could
+     * create a suitable title
+     * @return a brief description of the data field
+     */
+    public String dataDescription();
+
 //    /**
 //     * Decide if two data are considered equal (meaning,
 //     *  having the same/similar time, and same/similar geo location
