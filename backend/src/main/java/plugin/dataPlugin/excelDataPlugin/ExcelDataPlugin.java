@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ExcelDataPlugin implements DataPlugin {
     private static int PREDICTNUM = -1;
+    private static int NUMBEROFMONTH = 12;
 
     @Override
     public String getName() {
@@ -46,8 +47,9 @@ public class ExcelDataPlugin implements DataPlugin {
                         double latitude = Double.valueOf(row.getCell(5).toString());
                         String[] date = row.getCell(2).toString().split("-");
                         long year = Long.valueOf(date[0]);
+                        long month = Long.valueOf(date[1]);
                         double data = Double.valueOf(row.getCell(1).toString());
-                        records.add(new MyData(new Location(longitude, latitude), year, data));
+                        records.add(new MyData(new Location(longitude, latitude), (year - 2013) * NUMBEROFMONTH + month, data));
                     }
                 }
             }
@@ -65,16 +67,6 @@ public class ExcelDataPlugin implements DataPlugin {
     public List<MyData> importDataFromAPI(String link) {
         return null;
     }
-
-//    @Override
-//    public boolean dataEqual(MyData d1, MyData d2) {
-//        return false;
-//    }
-//
-//    @Override
-//    public MyData group(MyData d1, MyData d2) {
-//        return null;
-//    }
 
     @Override
     public int predictFuture() {

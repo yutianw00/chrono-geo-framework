@@ -101,16 +101,6 @@ public class ApiDataPlugin implements DataPlugin {
         return records;
     }
 
-//    @Override
-//    public boolean dataEqual(MyData d1, MyData d2) {
-//        return false;
-//    }
-//
-//    @Override
-//    public MyData group(MyData d1, MyData d2) {
-//        return null;
-//    }
-
     @Override
     public int predictFuture() {
         return PREDICTNUM;
