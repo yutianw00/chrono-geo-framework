@@ -18,12 +18,12 @@ public class ExcelDataPlugin implements DataPlugin {
 
     @Override
     public String getName() {
-        return null;
+        return "Excel Data Plugin";
     }
 
     @Override
     public String getIntro() {
-        return null;
+        return "Handle Datasets in Excel Files, Group Data By Integer Part of Locations";
     }
 
     @Override
@@ -36,7 +36,8 @@ public class ExcelDataPlugin implements DataPlugin {
             book = new XSSFWorkbook(inputStream);
             sheet = book.getSheetAt(0);
             if (sheet != null) {
-                int firstRow = sheet.getFirstRowNum();
+                //skip the first line
+                int firstRow = sheet.getFirstRowNum() + 1;
                 int lastRow = sheet.getLastRowNum();
                 for (int i = firstRow; i <= lastRow; i++) {
                     Row row = sheet.getRow(i);
@@ -52,8 +53,10 @@ public class ExcelDataPlugin implements DataPlugin {
             }
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return records;
     }
