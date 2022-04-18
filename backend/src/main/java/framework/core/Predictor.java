@@ -29,11 +29,7 @@ public class Predictor {
         double[] dataArray = new double[(dataLst.size())];
         double[] timeArray = new double[(dataLst.size())];
 
-        System.out.println(dataLst.size());
-        System.out.println(dataLst);
-
         for (int i = 0; i < dataLst.size(); i++) {
-            System.out.println(i);
             MyData data = dataLst.get(i);
             longtitudeArray[i] = data.getLocation().getLongtitude();
             latitudeArray[i] = data.getLocation().getLatitude();
