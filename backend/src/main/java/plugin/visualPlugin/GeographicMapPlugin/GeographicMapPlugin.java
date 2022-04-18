@@ -29,16 +29,18 @@ public class GeographicMapPlugin implements VisualPlugin {
     }
 
     @Override
-    public boolean render(List<MyData> data, String dataDescription) {
-        // creating a table for rendering using the data
-        Table table = new ProcessInput().processInput(data);
+    public boolean render(List<MyData> data, String dataDescription, int predictDataNum) {
 
+        int predictIdx = data.size() - predictDataNum;
+        List<MyData> actualData = data.subList(0, predictIdx);
+        List<MyData> predictData = data.subList(predictIdx, data.size());
+
+        // creating a table for rendering using the data
+        Table table = new ProcessInput().processInput(actualData);
 
         table = table.where(table.nCol("latitude").isGreaterThan(0));
         NumericColumn<?> x = table.nCol("latitude");
         NumericColumn<?> y = table.nCol("longtitude");
-
-
 
         String title = dataDescription + " with respect to time";
 
@@ -52,9 +54,21 @@ public class GeographicMapPlugin implements VisualPlugin {
                         .build();
         Trace trace =
                 ScatterTrace.builder(x, y).marker(Marker.builder().size(1).build()).name("lat/lon").build();
-        Plot.show(new Figure(layout, trace, trace));
 
-        Table fatalities1 = table.summarize("data", mean).by("time");
+        // creating a table for rendering using the data
+        Table table2 = new ProcessInput().processInput(predictData);
+
+        table2 = table2.where(table2.nCol("latitude").isGreaterThan(0));
+        NumericColumn<?> x2 = table2.nCol("latitude");
+        NumericColumn<?> y2 = table2.nCol("longtitude");
+
+        String title2 = dataDescription + " with respect to time";
+
+        Trace trace2 =
+                ScatterTrace.builder(x, y).marker(Marker.builder().size(1).build()).name("lat/lon").build();
+        Plot.show(new Figure(layout, trace, trace2));
+
+//        Table fatalities1 = table.summarize("data", mean).by("time");
 
 //        String title = dataDescription + " with respect to time";
 //
