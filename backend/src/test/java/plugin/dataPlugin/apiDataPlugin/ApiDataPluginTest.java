@@ -29,14 +29,6 @@ public class ApiDataPluginTest {
     }
 
     @Test
-    public void dataEqualTest() {
-    }
-
-    @Test
-    public void groupTest() {
-    }
-
-    @Test
     public void predictFutureTest() {
     }
 }
