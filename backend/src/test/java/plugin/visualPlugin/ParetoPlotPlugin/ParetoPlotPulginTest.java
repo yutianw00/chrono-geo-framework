@@ -1,11 +1,10 @@
-package plugin.visualPlugin.dummyVisualPlugin.ParetoPlotPlugin;
+package plugin.visualPlugin.ParetoPlotPlugin;
 
 import framework.core.utils.Location;
 import framework.core.utils.MyData;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import plugin.visualPlugin.ParetoPlotPlugin.ParetoPlotPulgin;
 
 import java.util.LinkedList;
 import java.util.List;
