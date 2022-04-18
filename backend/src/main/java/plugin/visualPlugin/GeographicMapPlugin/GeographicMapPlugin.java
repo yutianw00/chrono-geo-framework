@@ -20,12 +20,12 @@ public class GeographicMapPlugin implements VisualPlugin {
 
     @Override
     public String getName() {
-        return null;
+        return "Geographic map plot Visual";
     }
 
     @Override
     public String getIntro() {
-        return null;
+        return "VISUAL Geographic plot plugin";
     }
 
     @Override
@@ -33,9 +33,12 @@ public class GeographicMapPlugin implements VisualPlugin {
         // creating a table for rendering using the data
         Table table = new ProcessInput().processInput(data);
 
+
         table = table.where(table.nCol("latitude").isGreaterThan(0));
         NumericColumn<?> x = table.nCol("latitude");
         NumericColumn<?> y = table.nCol("longtitude");
+
+
 
         String title = dataDescription + " with respect to time";
 
@@ -49,7 +52,7 @@ public class GeographicMapPlugin implements VisualPlugin {
                         .build();
         Trace trace =
                 ScatterTrace.builder(x, y).marker(Marker.builder().size(1).build()).name("lat/lon").build();
-        Plot.show(new Figure(layout, trace));
+        Plot.show(new Figure(layout, trace, trace));
 
         Table fatalities1 = table.summarize("data", mean).by("time");
 
@@ -68,11 +71,11 @@ public class GeographicMapPlugin implements VisualPlugin {
 
     @Override
     public String graphTitle() {
-        return null;
+        return "Geographic map plot graph Title";
     }
 
     @Override
     public String graphDescription() {
-        return null;
+        return "This is a geographic map plot graph, which display the trace of the data";
     }
 }

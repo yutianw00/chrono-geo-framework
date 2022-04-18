@@ -5,3 +5,4 @@ plugin.visualPlugin.DummyPlugin.DummyVisualPlugin
 plugin.visualPlugin.BarPlotPlugin.BarPlotPlugin
 plugin.visualPlugin.ParetoPlotPlugin.ParetoPlotPulgin
 plugin.visualPlugin.PieChartPlugin.PieChartVisualPlugin
+plugin.visualPlugin.GeographicMapPlugin.GeographicMapPlugin
