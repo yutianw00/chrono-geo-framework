@@ -28,7 +28,7 @@ public interface VisualPlugin {
      * @param data the data take in for visualization to render
      * @return true if the render succeed, false otherwise
      */
-    boolean render(List<MyData> data, String dataDescription);
+    boolean render(List<MyData> data, String dataDescription, int predictDataNum);
 
     /**
      * get the title of the rendered visual plot

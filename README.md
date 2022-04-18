@@ -139,14 +139,23 @@ get a description of the rendered visual plot
 
 ## Machine Learning API description
 
-The framework uses the Machine Learning ARIMA (Autoregressive integrated moving average) algorithm to make future predictions. Different from the popular time-series prediction deep learning recurrent neural network models such as LSTM or GRU, ARIMA is a relatively light and simple model that relies on optimization and statistics. No deep neural network is needed in this network, so no extensive data or training is needed, allowing the framework to make machine learning based predictions relatively fast with relative smaller dataset. Only several linear computations over the dataset would be needed before the prediction is made. 
+The framework uses the Machine Learning ARIMA (Autoregressive integrated moving average) algorithm to make future predictions. Different from the popular time-series prediction deep learning recurrent neural network models such as LSTM or GRU, ARIMA is a relatively light and simple model that relies on optimization and statistics, and can be run locally. No deep neural network is needed in this network, so no extensive data or training is needed, allowing the framework to make machine learning based predictions relatively fast with relative smaller dataset. Only several linear computations over the dataset would be needed before the prediction is made. 
 
-For more information about ARIMA (Autoregressive integrated moving average), please [click here](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average), [click here](https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/), or [click here](https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/).
+For more information about ARIMA (Autoregressive integrated moving average), please [check Wikipedia](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average), [click here](https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/), or [click here](https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/).
 
 The framework uses a local ARIMA api developed by Workday.com. For respective Javadoc and Github page, please check below. 
 - [Javadoc API](https://www.mvndoc.com/c/com.workday/timeseries-forecast/index.html)
 - [Github page](https://github.com/Workday/timeseries-forecast)
 
-## Example dataset
+## Example local dataset and APIs
+
+### Local dataset
+
+Two example local dataset, `bird_migration.csv` and `bird_migration.xlsx` are provided, and they are stored at `backend/src/main/resources/dataset`.
+
+For testing or debugging purposes, their "mini version" (which is a small file based on the first 30 lines of the dataset), two other local datasets are also provided: `bird_migration_mini.csv` and `bird_migration_mini.xlsx`, also stored at the same folder. 
+
+### APIs
+The api we used to test our implementation is stored in `api.txt`, also in the folder `backend/src/main/resources/dataset`. 
 
 ## Example plugins and corresponding screenshots
