@@ -24,7 +24,8 @@ public interface DataPlugin {
      *
      * @param path The path of the file
      * @return The data from the file in form of {@link MyData} list,
-     *  or {@code null} if importing data from a file is not supported
+     *  or {@code null} if importing data from a file is not supported,
+     *  or if there's an error happened during reading file
      */
     public List<MyData> importDataFromFile(String path);
 
@@ -33,7 +34,8 @@ public interface DataPlugin {
      *
      * @param link The link/token for the api
      * @return The data imported from the API in form of {@link MyData} list,
-     *  or {@code null} if importing data from API is not supported
+     *  or {@code null} if importing data from API is not supported,
+     *  or if there's an error happened during reading API url
      */
     public List<MyData> importDataFromAPI(String link);
 
