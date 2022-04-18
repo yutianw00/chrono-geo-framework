@@ -9,6 +9,7 @@ import tech.tablesaw.plotly.api.PiePlot;
 
 import java.util.List;
 
+import static tech.tablesaw.aggregate.AggregateFunctions.mean;
 import static tech.tablesaw.aggregate.AggregateFunctions.sum;
 
 public class PieChartVisualPlugin implements VisualPlugin {
@@ -30,7 +31,7 @@ public class PieChartVisualPlugin implements VisualPlugin {
         // BAR PLOTS
 
         // Sum the number of fatalities from each tornado, grouping by scale
-        Table fatalities1 = table.summarize("data", sum).by("time");
+        Table fatalities1 = table.summarize("data", mean).by("time");
         // Plot
         Plot.show(
                 PiePlot.create(
