@@ -63,17 +63,36 @@ public class ApiDataPlugin implements DataPlugin {
         String jsonID = id + "";
         while (jsonObject.containsKey(jsonID)) {
             JSONObject patient = (JSONObject) jsonObject.get(jsonID);
-//            JSONArray routes = (JSONArray) patient.get("route");
-//            JSONObject firstRoute = (JSONObject) routes.get(0);
-//            String str = firstRoute.getString("start_time");
-//            String year = str.split("-")[0];
+            Object obj = patient.get("route");
+            String time = "";
+            if (obj instanceof JSONArray) {
+                JSONArray routes = (JSONArray) obj;
+                JSONObject firstRoute = (JSONObject) routes.get(0);
+                String str = firstRoute.getString("start_time");
+                String[] arr = str.split("-");
+                if (arr.length < 3) {
+                    id++;
+                    jsonID = id + "";
+                    continue;
+                }
+                time = arr[0] + arr[1] + arr[2].split("T")[0];
+            } else if (obj instanceof JSONObject) {
+                JSONObject route = (JSONObject) obj;
+                String str = route.getString("start_time");
+                String[] arr = str.split("-");
+                if (arr.length < 3) {
+                    id++;
+                    jsonID = id + "";
+                    continue;
+                }
+                time = arr[0] + arr[1] + arr[2].split("T")[0];
+            }
             JSONObject patientInfo = (JSONObject) patient.get("patient_info");
             JSONObject residentalInfo = (JSONObject) patientInfo.get("residental_info");
             double longitude = Double.parseDouble(residentalInfo.getString("lng"));
             double latitude = Double.parseDouble(residentalInfo.getString("lat"));
             double data = Double.parseDouble(patientInfo.getString("age"));
-//            System.out.println(longitude + " " + latitude + " " + age);
-            records.add(new MyData(new Location((long) longitude, (long) latitude), Long.parseLong(jsonID), data));
+            records.add(new MyData(new Location((long) longitude, (long) latitude), Long.parseLong(time), data));
             id++;
             jsonID = id + "";
         }
