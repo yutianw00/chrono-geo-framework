@@ -1,7 +1,7 @@
 package plugin.visualPlugin.BarPlotPlugin;
 
 
-import static tech.tablesaw.aggregate.AggregateFunctions.sum;
+import static tech.tablesaw.aggregate.AggregateFunctions.mean;
 
 import framework.core.VisualPlugin;
 import framework.core.utils.MyData;
