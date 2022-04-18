@@ -26,7 +26,7 @@ public class BarPlotPlugin implements VisualPlugin {
     }
 
     @Override
-    public boolean render(List<MyData> data, String dataDescription) {
+    public boolean render(List<MyData> data, String dataDescription, int predictDataNum) {
 
         // creating a table for rendering using the data
         Table table = new ProcessInput().processInput(data);

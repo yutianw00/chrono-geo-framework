@@ -168,10 +168,11 @@ public class FrameworkImpl implements Framework{
         predictNum = chosenDataplugin.predictFuture();
 
         Predictor.predict(data, predictNum);
+        int predictDataNum = (predictNum == -1) ? 0 : predictNum;
 
 
         VisualPlugin visualPlugin = visualPlugins.get(chosenVisualPluginId);
-        boolean res = visualPlugin.render(data, dataDescription);
+        boolean res = visualPlugin.render(data, dataDescription, predictDataNum);
         if (!res) {
             errMsg = "Render err: rendering failed";
         } else {
