@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelDataPlugin implements DataPlugin {
-    private static int PREDICTNUM = 5;
+    private static int PREDICTNUM = 1000;
     private static int NUMBEROFMONTH = 12;
 
     @Override
