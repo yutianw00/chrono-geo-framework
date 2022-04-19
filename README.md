@@ -159,3 +159,28 @@ For testing or debugging purposes, their "mini version" (which is a small file b
 The api we used to test our implementation is stored in `api.txt`, also in the folder `backend/src/main/resources/dataset`. 
 
 ## Example plugins and corresponding screenshots
+
+### Dataplugins 
+
+The example data plugins we provide include:
+- CSV plugin that reads a csv file, for example, `bird_migration.csv`
+- Excel plugin that reads an excel file, for example, `bird_migration.xlsx`
+- API plugin that reads data from an api
+
+(we also provide a dummy dataplugin, `DummyDataPlugin.java`, as a simple plugin example for other plugins)
+
+### Visual plugins
+
+The example visual plugins we provide include:
+- BarPlot plugin and Pareto plugin that render data as horizontal and vertical barplots 
+- PieChart plugin that renders data as a pie chart
+- GeoGraphic plugin that renders the location data
+
+The corresponding pictures are shown below:
+
+![barplot](barplot.png)
+![piechart](piechart.png)
+
+As mentioned, our framework also supports the prediction of future data. As shown below, the orange dots on the up-right corner are the predicted data.
+
+![geograph](geograph.png)

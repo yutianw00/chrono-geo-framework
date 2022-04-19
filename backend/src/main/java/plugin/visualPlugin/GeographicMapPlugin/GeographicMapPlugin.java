@@ -31,6 +31,8 @@ public class GeographicMapPlugin implements VisualPlugin {
     @Override
     public boolean render(List<MyData> data, String dataDescription, int predictDataNum) {
 
+        System.out.println(predictDataNum);
+
         int predictIdx = data.size() - predictDataNum;
         List<MyData> actualData = data.subList(0, predictIdx);
         List<MyData> predictData = data.subList(predictIdx, data.size());
@@ -62,10 +64,10 @@ public class GeographicMapPlugin implements VisualPlugin {
         NumericColumn<?> x2 = table2.nCol("latitude");
         NumericColumn<?> y2 = table2.nCol("longtitude");
 
-        String title2 = dataDescription + " with respect to time";
+//        String title2 = dataDescription + " with respect to time";
 
         Trace trace2 =
-                ScatterTrace.builder(x, y).marker(Marker.builder().size(1).build()).name("lat/lon").build();
+                ScatterTrace.builder(x2, y2).marker(Marker.builder().size(1).build()).name("lat/lon").build();
         Plot.show(new Figure(layout, trace, trace2));
 
 //        Table fatalities1 = table.summarize("data", mean).by("time");

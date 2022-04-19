@@ -43,8 +43,8 @@ public class Predictor {
         double[] predictedTime = predictData(timeArray, predictNum);
 
         for (int i = 0; i < predictNum; i++) {
-            MyData predictData = new MyData(new Location((long)predictedLongtitude[i],
-                    (long)predictedLatitude[i]), (long)predictedTime[i], predictedData[i]);
+            MyData predictData = new MyData(new Location(predictedLongtitude[i],
+                    predictedLatitude[i]), (long)predictedTime[i], predictedData[i]);
             dataLst.add(predictData);
         }
     }
