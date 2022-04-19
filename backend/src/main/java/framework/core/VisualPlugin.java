@@ -25,7 +25,9 @@ public interface VisualPlugin {
      * and automatically open that rendered webpage,
      * return the result of the rendering process
      *
-     * @param data the data take in for visualization to render
+     * @param data the data take in for visualization to render,
+     *             the last {@code predictDataNum} data are predicted
+     * @param predictDataNum the length of the data that is predicted
      * @return true if the render succeed, false otherwise
      */
     boolean render(List<MyData> data, String dataDescription, int predictDataNum);

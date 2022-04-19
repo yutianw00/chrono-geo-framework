@@ -117,11 +117,15 @@ Get a brief introduction of the visual plugin
 
  * **Returns:** an introduction to the current visual plugin
 
-##### `boolean render(List<MyData> data, String dataDescription)`
+##### `boolean render(List<MyData> data, String dataDescription, int predictDataNum)`
 
 create a new html file (for example, index.html) in the folder, and automatically open that rendered webpage, return the result of the rendering process
 
- * **Parameters:** `data` — the data take in for visualization to render
+ * **Parameters:**
+   * `data` — the data take in for visualization to render,
+
+     the last {@code predictDataNum} data are predicted
+   * `predictDataNum` — the length of the data that is predicted
  * **Returns:** true if the render succeed, false otherwise
 
 ##### `String graphTitle()`
