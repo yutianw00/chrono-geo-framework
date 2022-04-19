@@ -141,7 +141,7 @@ get a description of the rendered visual plot
  * **Returns:** a description of the rendered visual plot
 
 
-## Machine Learning API description
+## Data Processing
 
 The framework uses the Machine Learning ARIMA (Autoregressive integrated moving average) algorithm to make future predictions. Different from the popular time-series prediction deep learning recurrent neural network models such as LSTM or GRU, ARIMA is a relatively light and simple model that relies on optimization and statistics, and can be run locally. No deep neural network is needed in this network, so no extensive data or training is needed, allowing the framework to make machine learning based predictions relatively fast with relative smaller dataset. Only several linear computations over the dataset would be needed before the prediction is made. 
 
