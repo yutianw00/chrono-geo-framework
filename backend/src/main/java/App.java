@@ -62,7 +62,7 @@ public class App extends NanoHTTPD {
         }
         // Extract the view-specific data from the game and apply it to the template.
         State state = app.getState();
-//        System.out.println(state.toString());
+
         return newFixedLengthResponse(state.toString());
 
     }

@@ -79,19 +79,6 @@ public class FrameworkImplTest {
     }
 
     @Test
-    public void groupData() {
-        framework.chooseDataPlugin(0);
-        framework.chooseVisualPlugin(0);
-        framework.importData("");
-        framework.groupData();
-        framework.render("");
-        /* will inspect manually that the test data is grouped,
-         * as the data field is private because of INFORMATION HIDING,
-         * and we have no access to it in the test except printing it
-         * */
-    }
-
-    @Test
     public void restart() {
         framework.restart();
         State state = framework.getState();

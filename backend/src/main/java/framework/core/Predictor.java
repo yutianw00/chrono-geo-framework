@@ -6,11 +6,11 @@ import com.workday.insights.timeseries.arima.struct.ForecastResult;
 import framework.core.utils.Location;
 import framework.core.utils.MyData;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Predictor {
 
+    // hyperparameters for ARIMA predictor
     private static final int p = 3;
     private static final int d = 0;
     private static final int q = 3;

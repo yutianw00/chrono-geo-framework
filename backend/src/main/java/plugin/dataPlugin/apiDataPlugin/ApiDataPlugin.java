@@ -8,7 +8,6 @@ import framework.core.utils.MyData;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +50,7 @@ public class ApiDataPlugin implements DataPlugin {
                 }
                 scanner.close();
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }

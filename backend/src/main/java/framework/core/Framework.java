@@ -10,13 +10,6 @@ public interface Framework {
     void sortData();
 
     /**
-     * group similar data together and reduce them to a new data
-     * similar data is defined in {@see framework.core.Dataplugin#dataEqual()}
-     * and are grouped following {@see framework.core.Dataplugin#group()}
-     */
-    void groupData();
-
-    /**
      * choose a data plugin to use
      * @param id The index of the data plugin in the plugin list
      */

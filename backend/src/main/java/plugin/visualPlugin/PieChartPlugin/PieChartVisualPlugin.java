@@ -10,7 +10,6 @@ import tech.tablesaw.plotly.api.PiePlot;
 import java.util.List;
 
 import static tech.tablesaw.aggregate.AggregateFunctions.mean;
-import static tech.tablesaw.aggregate.AggregateFunctions.sum;
 
 public class PieChartVisualPlugin implements VisualPlugin {
     @Override

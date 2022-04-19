@@ -14,8 +14,6 @@ import tech.tablesaw.plotly.traces.Trace;
 
 import java.util.List;
 
-import static tech.tablesaw.aggregate.AggregateFunctions.mean;
-
 public class GeographicMapPlugin implements VisualPlugin {
 
     @Override
@@ -30,8 +28,6 @@ public class GeographicMapPlugin implements VisualPlugin {
 
     @Override
     public boolean render(List<MyData> data, String dataDescription, int predictDataNum) {
-
-        System.out.println(predictDataNum);
 
         int predictIdx = data.size() - predictDataNum;
         List<MyData> actualData = data.subList(0, predictIdx);
@@ -63,8 +59,6 @@ public class GeographicMapPlugin implements VisualPlugin {
         table2 = table2.where(table2.nCol("latitude").isGreaterThan(0));
         NumericColumn<?> x2 = table2.nCol("latitude");
         NumericColumn<?> y2 = table2.nCol("longtitude");
-
-//        String title2 = dataDescription + " with respect to time";
 
         Trace trace2 = ScatterTrace.builder(x2, y2).marker(Marker.builder().size(1).build()).name("Predict lat/lon").build();
         Plot.show(new Figure(layout, trace, trace2));

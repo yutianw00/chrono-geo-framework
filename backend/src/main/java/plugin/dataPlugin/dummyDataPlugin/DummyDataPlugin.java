@@ -4,7 +4,6 @@ import framework.core.DataPlugin;
 import framework.core.utils.Location;
 import framework.core.utils.MyData;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
