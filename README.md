@@ -1,4 +1,4 @@
-# HW6 README
+# Chrono-geo data visualizer
 
 ## Basic Information
 - Name: Chrono-geo data visualizer
